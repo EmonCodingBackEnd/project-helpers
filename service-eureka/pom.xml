@@ -30,7 +30,7 @@
     </dependencies>
 
     <build>
-        <finalName>service-eureka-server-provider</finalName>
+        <finalName>service-eureka-provider</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
