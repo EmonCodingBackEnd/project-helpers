@@ -1,0 +1,5 @@
+env: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${prod.host}:8761/eureka/

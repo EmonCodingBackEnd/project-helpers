@@ -1,0 +1,33 @@
+# 切换生产环境地址使用
+prod:
+  host: 39.107.97.197
+
+spring:
+  application:
+    name: config
+  profiles:
+    active: dev
+  rabbitmq:
+    host: ${prod.host}
+    port: 5672
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/EmonCodingBackEnd/project-helpers.git
+          search-paths:
+            - service-config-repo
+          username: Rushing0711
+          password: Mt209@3
+          basedir: /home/emon/saas/config/basedir
+  security:
+    user:
+      password: 123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  config: classpath:logback-spring-${spring.profiles.active}.xml

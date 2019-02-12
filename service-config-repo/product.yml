@@ -1,0 +1,23 @@
+env: none
+
+spring:
+  datasource:
+    # 去掉MySQL5.7的驱动
+    #driver-class-name: com.mysql.jdbc.Driver
+    # 添加MySQL8.0的驱动类
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: springboot
+    password: SpringBoot@163
+    url: jdbc:mysql://${prod.host}/selldb?characterEncoding=utf-8&useSSL=false
+  rabbitmq:
+    host: ${prod.host}
+    port: 5672
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    # 解决MySQL8.0下错误:Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+logging:
+  config: classpath:logback-spring-${spring.profiles.active}.xml

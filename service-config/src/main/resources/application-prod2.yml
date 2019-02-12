@@ -1,0 +1,7 @@
+server:
+  port: 8772
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${prod.host}:8761/eureka/,http://${prod.host}:8762/eureka/,http://${prod.host}:8763/eureka/
