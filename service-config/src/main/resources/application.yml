@@ -1,15 +1,8 @@
-# 切换生产环境地址使用
-prod:
-  host: 39.107.97.197
-
 spring:
   application:
     name: config
   profiles:
     active: dev
-  rabbitmq:
-    host: ${prod.host}
-    port: 5672
   cloud:
     config:
       server:

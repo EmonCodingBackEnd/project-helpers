@@ -2,4 +2,4 @@ env: dev
 eureka:
   client:
     service-url:
-      defaultZone: http://${prod.host}:8761/eureka/
+      defaultZone: http://${host}:8761/eureka/
