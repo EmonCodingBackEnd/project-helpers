@@ -49,6 +49,7 @@
     </dependencies>
 
     <build>
+        <finalName>service-config-server-provider</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
