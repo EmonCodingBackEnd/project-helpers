@@ -138,7 +138,7 @@
             <repositories>
                 <repository>
                     <id>nexus-releases</id>
-                    <url>http://192.168.3.116:8089/repository/maven-public/</url>
+                    <url>http://repo.emon.vip/repository/maven-public/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -148,7 +148,7 @@
                 </repository>
                 <repository>
                     <id>nexus-snapshots</id>
-                    <url>http://192.168.3.116:8089/repository/maven-snapshots/</url>
+                    <url>http://repo.emon.vip/repository/maven-snapshots/</url>
                     <releases>
                         <enabled>false</enabled>
                     </releases>
@@ -160,7 +160,7 @@
             <pluginRepositories>
                 <pluginRepository>
                     <id>nexus-releases</id>
-                    <url>http://192.168.3.116:8089/repository/maven-public/</url>
+                    <url>http://repo.emon.vip/repository/maven-public/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -170,7 +170,7 @@
                 </pluginRepository>
                 <pluginRepository>
                     <id>nexus-snapshots</id>
-                    <url>http://192.168.3.116:8089/repository/maven-snapshots/</url>
+                    <url>http://repo.emon.vip/repository/maven-snapshots/</url>
                     <releases>
                         <enabled>false</enabled>
                     </releases>
@@ -183,12 +183,12 @@
                 <repository>
                     <id>nexus-releases</id>
                     <name>nexus release Repository</name>
-                    <url>http://192.168.3.116:8089/repository/maven-releases/</url>
+                    <url>http://repo.emon.vip/repository/maven-releases/</url>
                 </repository>
                 <snapshotRepository>
                     <id>nexus-snapshots</id>
                     <name>nexus snapshots Repository</name>
-                    <url>http://192.168.3.116:8089/repository/maven-snapshots/</url>
+                    <url>http://repo.emon.vip/repository/maven-snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
