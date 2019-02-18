@@ -27,5 +27,9 @@ public class DefaultRibbonConfiguration {
         if (this.propertiesFactory.isSet(IRule.class, name)) {
             return this.propertiesFactory.get(IRule.class, config, name);
         }
+
+        FilterAndWeightMetadataRule rule = new FilterAndWeightMetadataRule();
+        rule.initWithNiwsConfig(config);
+        return rule;
     }
 }
