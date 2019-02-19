@@ -4,12 +4,15 @@ import com.coding.helpers.plugin.gray.annotation.EnableMvcGrayFilter;
 import com.coding.helpers.plugin.gray.config.RequestRuleProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @ConditionalOnMissingBean(annotation = EnableMvcGrayFilter.class)
+@EnableConfigurationProperties(RequestRuleProperties.class)
 public class CoreAutoConfiguration implements WebMvcConfigurer {
 
     @Autowired private RequestRuleProperties ruleProperties;

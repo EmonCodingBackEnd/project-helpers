@@ -23,6 +23,7 @@ public class MvcGrayFilter extends OncePerRequestFilter {
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        // 用当前应用的配置更新传递规则
         String labels = request.getHeader(GrayConstants.RULE_HEADER);
         FilterRequestRule rule = RequestRuleFactory.create(labels);
         labels = ruleProperties.updateRule(rule);
