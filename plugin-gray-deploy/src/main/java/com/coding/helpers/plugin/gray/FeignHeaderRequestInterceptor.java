@@ -1,6 +1,7 @@
 package com.coding.helpers.plugin.gray;
 
 import com.coding.helpers.plugin.gray.config.RequestRuleProperties;
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.coding.helpers.plugin.gray.request.rule.FilterRequestRule;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -17,7 +18,7 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
     public void apply(RequestTemplate requestTemplate) {
         FilterRequestRule rule = CoreHeaderInterceptor.rule.get();
         if (rule != null) {
-            requestTemplate.header(CoreHeaderInterceptor.HEADER_RULE, rule.toRule());
+            requestTemplate.header(GrayConstants.RULE_HEADER, rule.toRule());
         }
     }
 }

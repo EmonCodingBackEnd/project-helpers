@@ -1,6 +1,7 @@
 package com.coding.helpers.plugin.gray;
 
 import com.coding.helpers.plugin.gray.config.RequestRuleProperties;
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.coding.helpers.plugin.gray.request.rule.FilterRequestRule;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +26,7 @@ public class CoreHttpRequestInterceptor implements ClientHttpRequestInterceptor 
         HttpRequestWrapper requestWrapper = new HttpRequestWrapper(request);
         FilterRequestRule rule = CoreHeaderInterceptor.rule.get();
         if (rule != null) {
-            requestWrapper.getHeaders().add(CoreHeaderInterceptor.HEADER_RULE, rule.toRule());
+            requestWrapper.getHeaders().add(GrayConstants.RULE_HEADER, rule.toRule());
         }
         return execution.execute(request, body);
     }

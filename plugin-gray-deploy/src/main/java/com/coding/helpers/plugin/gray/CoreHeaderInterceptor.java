@@ -1,6 +1,7 @@
 package com.coding.helpers.plugin.gray;
 
 import com.coding.helpers.plugin.gray.config.RequestRuleProperties;
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.coding.helpers.plugin.gray.request.rule.FilterRequestRule;
 import com.coding.helpers.plugin.gray.request.rule.RequestRuleFactory;
 import com.netflix.hystrix.strategy.concurrency.HystrixRequestContext;
@@ -14,13 +15,11 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@Slf4j
 @Setter
+@Slf4j
 public class CoreHeaderInterceptor extends HandlerInterceptorAdapter {
 
     private RequestRuleProperties ruleProperties;
-
-    public static final String HEADER_RULE = "x-rule";
 
     public static final HystrixRequestVariableDefault<FilterRequestRule> rule =
             new HystrixRequestVariableDefault<>();
@@ -51,7 +50,7 @@ public class CoreHeaderInterceptor extends HandlerInterceptorAdapter {
             HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         // 用当前应用的配置更新传递规则
-        String labels = request.getHeader(CoreHeaderInterceptor.HEADER_RULE);
+        String labels = request.getHeader(GrayConstants.RULE_HEADER);
         FilterRequestRule rule = RequestRuleFactory.create(labels);
         labels = ruleProperties.updateRule(rule);
         CoreHeaderInterceptor.initHystrixRequestContext(labels);

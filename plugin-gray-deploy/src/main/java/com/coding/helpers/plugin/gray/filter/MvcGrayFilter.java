@@ -2,6 +2,7 @@ package com.coding.helpers.plugin.gray.filter;
 
 import com.coding.helpers.plugin.gray.CoreHeaderInterceptor;
 import com.coding.helpers.plugin.gray.config.RequestRuleProperties;
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.coding.helpers.plugin.gray.request.rule.FilterRequestRule;
 import com.coding.helpers.plugin.gray.request.rule.RequestRuleFactory;
 import lombok.Setter;
@@ -22,7 +23,7 @@ public class MvcGrayFilter extends OncePerRequestFilter {
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        String labels = request.getHeader(CoreHeaderInterceptor.HEADER_RULE);
+        String labels = request.getHeader(GrayConstants.RULE_HEADER);
         FilterRequestRule rule = RequestRuleFactory.create(labels);
         labels = ruleProperties.updateRule(rule);
         CoreHeaderInterceptor.initHystrixRequestContext(labels);

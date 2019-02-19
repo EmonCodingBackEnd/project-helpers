@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.ishanshan.plugin.GrayAutoConfiguration
+com.coding.helpers.plugin.gray.GrayAutoConfiguration

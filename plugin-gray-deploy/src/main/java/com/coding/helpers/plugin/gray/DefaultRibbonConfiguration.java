@@ -8,15 +8,25 @@ import org.springframework.cloud.netflix.ribbon.PropertiesFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.util.StringUtils;
 
+@SuppressWarnings("SpringJavaAutowiredMembersInspection")
 public class DefaultRibbonConfiguration {
 
     @Value("${ribbon.client.name:#{null}")
     private String name;
 
-    @Autowired(required = false)
     private IClientConfig config;
 
-    private PropertiesFactory propertiesFactory;
+    @Autowired(required = false)
+    public void setConfig(IClientConfig config) {
+        this.config = config;
+    }
+
+    private final PropertiesFactory propertiesFactory;
+
+    @Autowired
+    public DefaultRibbonConfiguration(PropertiesFactory propertiesFactory) {
+        this.propertiesFactory = propertiesFactory;
+    }
 
     @Bean
     public IRule ribbonRule() {

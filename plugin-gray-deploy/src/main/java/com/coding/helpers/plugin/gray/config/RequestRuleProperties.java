@@ -1,18 +1,19 @@
 package com.coding.helpers.plugin.gray.config;
 
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.coding.helpers.plugin.gray.request.rule.FilterRequestRule;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.util.StringUtils;
 
-@ConfigurationProperties("helper.request.rule")
 @Getter
 @Setter
+@ConfigurationProperties(prefix = "helper.request.rule")
 public class RequestRuleProperties {
 
     /** 向下请求规则内容. */
-    private String data = "";
+    private String data = GrayConstants.EMPTY;
 
     /** 传递模式. {@linkplain TransferModeEnum 参见} */
     private TransferModeEnum transferMode = TransferModeEnum.OVERRIDE_FIRST;
