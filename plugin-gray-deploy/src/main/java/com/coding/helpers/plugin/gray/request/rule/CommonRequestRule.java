@@ -1,5 +1,6 @@
 package com.coding.helpers.plugin.gray.request.rule;
 
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.netflix.loadbalancer.Server;
 import com.netflix.niws.loadbalancer.DiscoveryEnabledServer;
 import lombok.Data;
@@ -12,11 +13,6 @@ import java.util.*;
 
 @Data
 public class CommonRequestRule implements FilterRequestRule {
-    private static final String META_DATA_KEY_TAG = "tag";
-
-    private static final String META_DATA_KEY_TAG_SPLIT = ",";
-
-    private static final String RULE_TYPE_TAG_SPLIT = "#";
 
     private Type type;
 
@@ -27,7 +23,8 @@ public class CommonRequestRule implements FilterRequestRule {
     public CommonRequestRule(int type, String tags) {
         this.type = Type.index(type);
         if (!StringUtils.isEmpty(tags)) {
-            this.tags = new HashSet<>(Arrays.asList(tags.split(META_DATA_KEY_TAG_SPLIT)));
+            this.tags =
+                    new HashSet<>(Arrays.asList(tags.split(GrayConstants.META_DATA_KEY_TAG_SPLIT)));
         } else {
             this.tags = new HashSet<>();
         }
@@ -56,8 +53,9 @@ public class CommonRequestRule implements FilterRequestRule {
     @Override
     public String toRule() {
         return type.index
-                + RULE_TYPE_TAG_SPLIT
-                + StringUtils.collectionToDelimitedString(tags, META_DATA_KEY_TAG_SPLIT);
+                + GrayConstants.RULE_TYPE_TAG_SPLIT
+                + StringUtils.collectionToDelimitedString(
+                        tags, GrayConstants.META_DATA_KEY_TAG_SPLIT);
     }
 
     @Override
@@ -118,10 +116,10 @@ public class CommonRequestRule implements FilterRequestRule {
 
     private ServerKey createServerKey(DiscoveryEnabledServer server) {
         Map<String, String> metadata = server.getInstanceInfo().getMetadata();
-        String label = metadata.get(META_DATA_KEY_TAG);
+        String label = metadata.get(GrayConstants.META_DATA_KEY_TAG);
         Set<String> set = new HashSet<>();
         if (!StringUtils.isEmpty(label)) {
-            set = new HashSet<>(Arrays.asList(label.split(META_DATA_KEY_TAG_SPLIT)));
+            set = new HashSet<>(Arrays.asList(label.split(GrayConstants.META_DATA_KEY_TAG_SPLIT)));
         }
         return new ServerKey(set);
     }

@@ -1,5 +1,6 @@
 package com.coding.helpers.plugin.gray.request.rule;
 
+import com.coding.helpers.plugin.gray.constant.GrayConstants;
 import com.netflix.loadbalancer.Server;
 import lombok.Data;
 import org.springframework.util.CollectionUtils;
@@ -9,13 +10,6 @@ import java.util.*;
 
 @Data
 public class ComposeRequestRule implements FilterRequestRule {
-    private static final String RULE_AND_SPLIT = "&";
-
-    private static final String RULE_AND_NAME = "AND";
-
-    private static final String RULE_OR_SPLIT = "|";
-
-    private static final String RULE_OR_NAME = "OR";
 
     private List<FilterRequestRule> rules;
 
@@ -27,12 +21,12 @@ public class ComposeRequestRule implements FilterRequestRule {
             return serverList;
         }
         Set<Server> result = new HashSet<>();
-        if (RULE_AND_NAME.equals(logic)) {
+        if (GrayConstants.RULE_AND_NAME.equals(logic)) {
             result.addAll(serverList);
             for (FilterRequestRule rule : rules) {
                 result.retainAll(rule.filter(result));
             }
-        } else if (RULE_OR_NAME.equals(logic)) {
+        } else if (GrayConstants.RULE_OR_NAME.equals(logic)) {
             for (FilterRequestRule rule : rules) {
                 result.addAll(rule.filter(serverList));
             }
@@ -43,7 +37,10 @@ public class ComposeRequestRule implements FilterRequestRule {
     @Override
     public String toRule() {
         return StringUtils.collectionToDelimitedString(
-                rules, RULE_AND_NAME.equals(logic) ? RULE_AND_SPLIT : RULE_OR_SPLIT);
+                rules,
+                GrayConstants.RULE_AND_NAME.equals(logic)
+                        ? GrayConstants.RULE_AND_SPLIT
+                        : GrayConstants.RULE_OR_SPLIT);
     }
 
     @Override
