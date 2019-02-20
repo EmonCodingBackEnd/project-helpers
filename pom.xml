@@ -45,6 +45,7 @@
 
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
+        <dynamic.host>http://repo.emon.vip</dynamic.host>
 
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -138,7 +139,7 @@
             <repositories>
                 <repository>
                     <id>nexus-releases</id>
-                    <url>http://repo.emon.vip/repository/maven-public/</url>
+                    <url>${dynamic.host}/repository/maven-public/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -148,7 +149,7 @@
                 </repository>
                 <repository>
                     <id>nexus-snapshots</id>
-                    <url>http://repo.emon.vip/repository/maven-snapshots/</url>
+                    <url>${dynamic.host}/repository/maven-snapshots/</url>
                     <releases>
                         <enabled>false</enabled>
                     </releases>
@@ -160,7 +161,7 @@
             <pluginRepositories>
                 <pluginRepository>
                     <id>nexus-releases</id>
-                    <url>http://repo.emon.vip/repository/maven-public/</url>
+                    <url>${dynamic.host}/repository/maven-public/</url>
                     <releases>
                         <enabled>true</enabled>
                     </releases>
@@ -170,7 +171,7 @@
                 </pluginRepository>
                 <pluginRepository>
                     <id>nexus-snapshots</id>
-                    <url>http://repo.emon.vip/repository/maven-snapshots/</url>
+                    <url>${dynamic.host}/repository/maven-snapshots/</url>
                     <releases>
                         <enabled>false</enabled>
                     </releases>
@@ -183,12 +184,12 @@
                 <repository>
                     <id>nexus-releases</id>
                     <name>nexus release Repository</name>
-                    <url>http://repo.emon.vip/repository/maven-releases/</url>
+                    <url>${dynamic.host}/repository/maven-releases/</url>
                 </repository>
                 <snapshotRepository>
                     <id>nexus-snapshots</id>
                     <name>nexus snapshots Repository</name>
-                    <url>http://repo.emon.vip/repository/maven-snapshots/</url>
+                    <url>${dynamic.host}/repository/maven-snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
