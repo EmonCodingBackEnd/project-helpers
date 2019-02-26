@@ -1,0 +1,33 @@
+dynamic:
+  host: http://repo.emon.vip
+
+spring:
+  application:
+    name: product
+eureka:
+  instance:
+    metadataMap:
+      tag: offline
+      weight: 100
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: ${dynamic.host}:8761/eureka/
+      loadbalancer:
+        retry:
+          enabled: false
+#management:
+#  security:
+#    enabled: false
+
+# feign.RetryableException: Read timed out executing POST
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+helper:
+  request:
+    rule:
+      data: 1#20190219
+      transfer-mode: override_first
