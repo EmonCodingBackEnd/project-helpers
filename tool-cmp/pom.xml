@@ -19,6 +19,7 @@
 
     <modules>
         <module>tool-cmp-generator</module>
+        <module>tool-cmp-api</module>
     </modules>
 
 </project>
