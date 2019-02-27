@@ -19,8 +19,8 @@
         <module>service-config</module>
         <module>service-gateway</module>
         <module>tool-util</module>
-        <module>tool-component</module>
-        <module>tool-experience</module>
+        <module>tool-cmp</module>
+        <module>tool-exp</module>
         <module>plugin-gray-deploy</module>
     </modules>
 
