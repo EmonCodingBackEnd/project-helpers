@@ -12,4 +12,15 @@
     <artifactId>${artifactId}</artifactId>
 
     <name>${parentArtifactId}-api</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-generator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -42,7 +42,12 @@
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
-                <artifactId>tool-component</artifactId>
+                <artifactId>tool-cmp-generator</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.coding.helpers.tool</groupId>
+                <artifactId>tool-cmp-api</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>

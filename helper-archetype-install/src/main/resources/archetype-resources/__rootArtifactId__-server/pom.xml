@@ -25,6 +25,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.coding.helpers</groupId>
+            <artifactId>${rootArtifactId}-api</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
