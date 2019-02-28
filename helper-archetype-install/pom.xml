@@ -35,6 +35,7 @@
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>3.0.1</version>
                 <configuration>
+                    <encoding>UTF-8</encoding>
                     <includeEmptyDirs>true</includeEmptyDirs>
                 </configuration>
             </plugin>
