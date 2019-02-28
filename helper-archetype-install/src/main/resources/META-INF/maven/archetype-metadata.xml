@@ -16,7 +16,7 @@
     <modules>
         <module id="${rootArtifactId}-api" dir="__rootArtifactId__-api" name="${rootArtifactId}-api">
             <fileSets>
-                <fileSet encoding="UTF-8">
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
                     <directory>src/main/java</directory>
                     <includes>
                         <!--<include>helper-archetype-api.iml</include>-->
@@ -26,7 +26,7 @@
         </module>
         <module id="${rootArtifactId}-common" dir="__rootArtifactId__-common" name="${rootArtifactId}-common">
             <fileSets>
-                <fileSet encoding="UTF-8">
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
                     <directory>src/main/java</directory>
                     <includes>
                         <!--<include>helper-archetype-common.iml</include>-->
