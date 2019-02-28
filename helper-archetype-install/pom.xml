@@ -37,6 +37,7 @@
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <includeEmptyDirs>true</includeEmptyDirs>
+                    <addDefaultExcludes>false</addDefaultExcludes>
                 </configuration>
             </plugin>
         </plugins>
