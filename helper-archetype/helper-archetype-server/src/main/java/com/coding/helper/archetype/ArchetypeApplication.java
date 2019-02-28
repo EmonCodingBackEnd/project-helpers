@@ -1,13 +1,13 @@
-package com.coding.helper.helperarchetypeserver;
+package com.coding.helper.archetype;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelperArchetypeServerApplication {
+public class ArchetypeApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HelperArchetypeServerApplication.class, args);
+		SpringApplication.run(ArchetypeApplication.class, args);
 	}
 
 }
