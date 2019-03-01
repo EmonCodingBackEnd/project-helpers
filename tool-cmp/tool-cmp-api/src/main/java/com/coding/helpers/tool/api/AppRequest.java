@@ -11,14 +11,15 @@ import java.lang.reflect.ParameterizedType;
 public abstract class AppRequest<T extends AppResponse> implements Serializable {
 
     private static final long serialVersionUID = -311322238195233470L;
+
     /** 请求ID，用作幂等性（idempotent）校验. */
     protected String requestId;
 
     /** 数字签名区域. */
     protected String signature;
 
-    /** 是否需要加密. */
-    protected boolean needEncrypt = false;
+    /** 加密. */
+    protected boolean encryption = false;
 
     /**
      * 获取应答类型.
