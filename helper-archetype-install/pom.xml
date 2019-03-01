@@ -90,3 +90,23 @@
         </snapshotRepository>
     </distributionManagement>
 </project>
+        <!--
+        心得体会：
+        1、使用自定义archetype创建多模块新项目，最外层pom.xml乱码的问题，如何解决？
+        被这个问题折磨了接近两天，机缘巧合得知如下解决方式：
+        首先，本文件配置关于编码配置：
+            <properties>
+                <java.version>1.8</java.version>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                <maven.compiler.source>${java.version}</maven.compiler.source>
+                <maven.compiler.target>${java.version}</maven.compiler.target>
+            </properties>
+        其次，最外层的pom.xml（**/archetype-resources/pom.xml）要添加多模块的描述：
+            <modules>
+                <module>${rootArtifactId}-api</module>
+                <module>${rootArtifactId}-common</module>
+                <module>${rootArtifactId}-server</module>
+            </modules>
+        这样，使用自定义archetype创建项目时，最外层pom.xml不会被再次解析，也就不会出现乱码问题了。
+        -->

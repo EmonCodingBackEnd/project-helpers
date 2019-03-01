@@ -10,6 +10,12 @@
 
     <name>${artifactId}</name>
 
+    <modules>
+        <module>${rootArtifactId}-api</module>
+        <module>${rootArtifactId}-common</module>
+        <module>${rootArtifactId}-server</module>
+    </modules>
+
     <parent>
         <artifactId>helper-parent</artifactId>
         <groupId>com.coding.helpers</groupId>
