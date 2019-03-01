@@ -9,6 +9,7 @@
             <directory></directory>
             <includes>
                 <include>.gitignore</include>
+                <include>pom_encode_patch.xml</include>
                 <!--<include>helper-archetype.iml</include>-->
             </includes>
         </fileSet>
