@@ -14,6 +14,10 @@
     <name>${parentArtifactId}-api</name>
 
     <dependencies>
+        <!-- 引入三方包 beg -->
+        <!-- 引入三方包 end -->
+
+        <!-- 引入二方包 beg -->
         <dependency>
             <groupId>com.coding.helpers.tool</groupId>
             <artifactId>tool-cmp-generator</artifactId>
@@ -22,5 +26,9 @@
             <groupId>com.coding.helpers.tool</groupId>
             <artifactId>tool-cmp-api</artifactId>
         </dependency>
+        <!-- 引入二方包 end -->
+
+        <!-- 引入一方包 beg -->
+        <!-- 引入一方包 end -->
     </dependencies>
 </project>

@@ -38,27 +38,27 @@
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-util</artifactId>
-                <version>${revision}</version>
+                <version>${parentRevision}</version>
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-cmp-generator</artifactId>
-                <version>${revision}</version>
+                <version>${parentRevision}</version>
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-cmp-api</artifactId>
-                <version>${revision}</version>
+                <version>${parentRevision}</version>
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.service</groupId>
                 <artifactId>service-gateway-common</artifactId>
-                <version>${revision}</version>
+                <version>${parentRevision}</version>
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.plugin</groupId>
                 <artifactId>plugin-gray-deploy</artifactId>
-                <version>${revision}</version>
+                <version>${parentRevision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

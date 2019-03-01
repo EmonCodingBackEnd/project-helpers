@@ -44,7 +44,7 @@
     </issueManagement>
 
     <properties>
-        <revision>1.0.0-SNAPSHOT</revision>
+        <parentRevision>1.0.0-SNAPSHOT</parentRevision>
         <dynamic.host>http://repo.emon.vip</dynamic.host>
 
         <java.version>1.8</java.version>
