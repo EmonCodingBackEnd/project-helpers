@@ -31,6 +31,7 @@ public abstract class AppRequest<T extends AppResponse> implements Serializable 
      * @author Rushing0711
      * @since 1.0.0
      */
+    @SuppressWarnings("unchecked")
     public Class<T> responseClass() {
         return (Class<T>)
                 ((ParameterizedType) this.getClass().getGenericSuperclass())
