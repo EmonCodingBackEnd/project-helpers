@@ -48,8 +48,23 @@
 
             <!-- 定义一方包 beg -->
             <dependency>
+                <groupId>com.coding.helpers</groupId>
+                <artifactId>helper-core</artifactId>
+                <version>${parentRevision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.coding.helpers.plugin</groupId>
+                <artifactId>plugin-gray-deploy</artifactId>
+                <version>${parentRevision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.coding.helpers.service</groupId>
+                <artifactId>service-gateway-common</artifactId>
+                <version>${parentRevision}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
-                <artifactId>tool-util</artifactId>
+                <artifactId>tool-cmp-api</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
             <dependency>
@@ -59,17 +74,7 @@
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
-                <artifactId>tool-cmp-api</artifactId>
-                <version>${parentRevision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.coding.helpers.service</groupId>
-                <artifactId>service-gateway-common</artifactId>
-                <version>${parentRevision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.coding.helpers.plugin</groupId>
-                <artifactId>plugin-gray-deploy</artifactId>
+                <artifactId>tool-util</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
             <!-- 定义一方包 end -->

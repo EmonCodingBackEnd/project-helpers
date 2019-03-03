@@ -1,9 +1,9 @@
 package com.coding.helpers.tool.cmp.api.annotation.resolver;
 
+import com.coding.helpers.core.annotation.support.TargetPoint;
 import com.coding.helpers.tool.cmp.api.AppRequest;
 import com.coding.helpers.tool.cmp.api.AppResponse;
 import com.coding.helpers.tool.cmp.api.annotation.resolver.config.IdempotenceConfig;
-import com.coding.helpers.tool.cmp.api.annotation.resolver.support.TargetPoint;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

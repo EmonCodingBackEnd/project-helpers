@@ -10,7 +10,7 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20190303-01         Rushing0711     M201903032202 新建文件
  ********************************************************************************/
-package com.coding.helpers.tool.cmp.api.annotation.resolver.support;
+package com.coding.helpers.core.annotation.support;
 
 import lombok.Getter;
 import lombok.Setter;

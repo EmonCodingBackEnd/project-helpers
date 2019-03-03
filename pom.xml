@@ -15,6 +15,7 @@
     <modules>
         <module>helper-dependencies</module>
         <module>helper-parent</module>
+        <module>helper-core</module>
         <module>service-eureka</module>
         <module>service-config</module>
         <module>service-gateway</module>
