@@ -35,6 +35,18 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 定义三方包 beg -->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>3.10.3</version>
+            </dependency>
+            <!-- 定义三方包 end -->
+
+            <!-- 定义二方包 beg -->
+            <!-- 定义二方包 end -->
+
+            <!-- 定义一方包 beg -->
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-util</artifactId>
@@ -60,6 +72,7 @@
                 <artifactId>plugin-gray-deploy</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
+            <!-- 定义一方包 end -->
         </dependencies>
     </dependencyManagement>
 

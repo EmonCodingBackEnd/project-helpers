@@ -1,4 +1,4 @@
-package com.coding.helpers.tool.api;
+package com.coding.helpers.tool.cmp.api;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ public abstract class AppRequest<T extends AppResponse> implements Serializable 
 
     private static final long serialVersionUID = -311322238195233470L;
 
-    /** 请求ID，用作幂等性（idempotent）校验. */
+    /** 请求ID，用作幂等性（idempotence）校验，要求每次请求的ID不重复. */
     protected String requestId;
 
     /** 数字签名区域. */

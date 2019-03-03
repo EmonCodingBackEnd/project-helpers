@@ -27,7 +27,14 @@ ribbon:
   ConnectTimeout: 20000
 
 helper:
-  request:
-    rule:
-      data: 1#20190219
-      transfer-mode: override_first
+  plugin:
+    gray:
+      request:
+        rule:
+          data: 1#20190219
+          transfer-mode: override_first
+  tool:
+    cmp:
+      api:
+        nonidempotent:
+          redis-key: helper:tool:cmp:api:nonidempotent

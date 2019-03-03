@@ -1,4 +1,4 @@
-package com.coding.helpers.tool.api;
+package com.coding.helpers.tool.cmp.api;
 
 import lombok.Getter;
 import lombok.Setter;
