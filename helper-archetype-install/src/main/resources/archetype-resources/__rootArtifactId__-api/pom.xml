@@ -20,10 +20,6 @@
         <!-- 引入二方包 beg -->
         <dependency>
             <groupId>com.coding.helpers.tool</groupId>
-            <artifactId>tool-cmp-generator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.coding.helpers.tool</groupId>
             <artifactId>tool-cmp-api</artifactId>
         </dependency>
         <!-- 引入二方包 end -->

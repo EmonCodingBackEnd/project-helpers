@@ -64,6 +64,10 @@
 
         <!-- 引入二方包 beg -->
         <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-generator</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.coding.helpers.plugin</groupId>
             <artifactId>plugin-gray-deploy</artifactId>
         </dependency>
