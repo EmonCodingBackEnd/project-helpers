@@ -1,4 +1,4 @@
-package com.coding.helpers.tool.api.annotation.resolver;
+package com.coding.helpers.tool.cmp.api.annotation.resolver;
 
 import com.coding.helpers.tool.cmp.api.AppRequest;
 import com.coding.helpers.tool.cmp.api.AppResponse;
