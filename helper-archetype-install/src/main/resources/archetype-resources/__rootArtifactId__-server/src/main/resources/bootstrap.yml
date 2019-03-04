@@ -1,5 +1,5 @@
 dynamic:
-  host: ${dynamic.host}
+  host: repo.emon.vip
   url: http://${dynamic.host}
   sslurl: https://${dynamic.host}
 
