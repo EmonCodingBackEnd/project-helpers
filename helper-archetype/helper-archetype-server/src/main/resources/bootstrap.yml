@@ -1,9 +1,11 @@
 dynamic:
-  host: http://repo.emon.vip
+  host: ${dynamic.host}
+  url: http://${dynamic.host}
+  sslurl: https://${dynamic.host}
 
 spring:
   application:
-    name: product
+    name: ${pom.build.finalName}
 eureka:
   instance:
     metadataMap:
@@ -13,7 +15,7 @@ eureka:
     healthcheck:
       enabled: true
     serviceUrl:
-      defaultZone: ${dynamic.host}:8761/eureka/
+      defaultZone: ${dynamic.url}:8761/eureka/
       loadbalancer:
         retry:
           enabled: false
@@ -26,15 +28,3 @@ ribbon:
   ReadTimeout: 20000
   ConnectTimeout: 20000
 
-helper:
-  plugin:
-    gray:
-      request:
-        rule:
-          data: 1#20190219
-          transfer-mode: override_first
-  tool:
-    cmp:
-      api:
-        nonidempotent:
-          redis-key: helper:tool:cmp:api:nonidempotent

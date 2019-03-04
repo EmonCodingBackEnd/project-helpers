@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Getter
 @Setter
 @Component
-@ConfigurationProperties(prefix = "helper.tool.cmp.api.nonidempotent")
+@ConfigurationProperties(prefix = "helper.tool-cmp-api.nonidempotent")
 public class IdempotenceConfig {
 
     /** 幂等性校验所需的redis缓存key，默认：<code>helper:tool:cmp:api:nonidempotent</code>. */

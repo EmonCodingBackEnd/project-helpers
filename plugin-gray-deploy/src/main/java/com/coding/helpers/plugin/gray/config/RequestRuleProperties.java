@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "helper.plugin.gray.request.rule")
+@ConfigurationProperties(prefix = "helper.plugin-gray-deploy.request.rule")
 public class RequestRuleProperties {
 
     /** 向下请求规则内容. */
