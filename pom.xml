@@ -46,7 +46,7 @@
 
     <properties>
         <parentRevision>1.0.0-SNAPSHOT</parentRevision>
-        <dynamic.host>http://repo.emon.vip</dynamic.host>
+        <dynamic.host>repo.emon.vip</dynamic.host>
         <dynamic.url>http://${dynamic.host}</dynamic.url>
         <dynamic.sslurl>https://${dynamic.host}</dynamic.sslurl>
 
