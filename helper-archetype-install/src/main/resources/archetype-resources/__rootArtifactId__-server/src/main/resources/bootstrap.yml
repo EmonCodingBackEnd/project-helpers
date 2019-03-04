@@ -1,11 +1,11 @@
 dynamic:
-  host: repo.emon.vip
+  host: '@dynamic.host@'
   url: http://${dynamic.host}
   sslurl: https://${dynamic.host}
 
 spring:
   application:
-    name: ${pom.build.finalName}
+    name: '@project.build.finalName@'
 eureka:
   instance:
     metadataMap:
