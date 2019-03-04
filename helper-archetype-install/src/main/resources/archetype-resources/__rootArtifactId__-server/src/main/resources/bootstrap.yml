@@ -6,6 +6,8 @@ dynamic:
 spring:
   application:
     name: '@project.build.finalName@'
+  profiles:
+    active: dev
 eureka:
   instance:
     metadataMap:
