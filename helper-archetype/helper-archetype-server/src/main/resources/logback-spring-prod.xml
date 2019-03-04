@@ -7,7 +7,7 @@
     <!--如果服务器运行在JDK1.6或更高版本，可以直接运行jconsole程序，然后连接到你的服务器的MBeanServer-->
     <jmxConfigurator/>
 
-    <property name="logDir" value="/home/saas/${rootArtifactId}/${rootArtifactId}-provider/logs"/>
+    <property name="logDir" value="/home/saas/${rootArtifactId}/@project.build.finalName@/logs"/>
 
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
