@@ -1,7 +1,8 @@
-package com.coding.helpers.tool.cmp.api.annotation;
+package com.coding.helpers.tool.cmp.idempotent.annotation;
+
+import com.coding.helpers.tool.cmp.api.AppRequest;
 
 import java.lang.annotation.*;
-import com.coding.helpers.tool.cmp.api.AppRequest;
 
 /**
  * 标注该注解的方法，表示方法的重复执行，会导致非幂等的结果.

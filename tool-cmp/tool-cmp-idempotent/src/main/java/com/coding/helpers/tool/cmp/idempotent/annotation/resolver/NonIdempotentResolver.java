@@ -1,9 +1,9 @@
-package com.coding.helpers.tool.cmp.api.annotation.resolver;
+package com.coding.helpers.tool.cmp.idempotent.annotation.resolver;
 
 import com.coding.helpers.core.annotation.support.TargetPoint;
 import com.coding.helpers.tool.cmp.api.AppRequest;
 import com.coding.helpers.tool.cmp.api.AppResponse;
-import com.coding.helpers.tool.cmp.api.annotation.resolver.config.IdempotenceConfig;
+import com.coding.helpers.tool.cmp.idempotent.annotation.resolver.config.IdempotenceConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -31,7 +31,7 @@ public class NonIdempotentResolver {
 
     @Around(
         value =
-                "@annotation(com.coding.helpers.tool.cmp.api.annotation.NonIdempotent) || @within(com.coding.helpers.tool.cmp.api.annotation.NonIdempotent)"
+                "@annotation(com.coding.helpers.tool.cmp.idempotent.annotation.NonIdempotent) || @within(com.coding.helpers.tool.cmp.idempotent.annotation.NonIdempotent)"
     )
     public Object doValidate(ProceedingJoinPoint point) throws Throwable {
         TargetPoint targetPoint = TargetPoint.createTargetPoint(point);

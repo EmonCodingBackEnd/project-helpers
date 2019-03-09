@@ -36,6 +36,12 @@
     <dependencyManagement>
         <dependencies>
             <!-- 定义三方包 beg -->
+            <!--数据映射/拷贝的框架 Dozer is a Java Bean to Java Bean mapper that recursively copies data from one object to another. -->
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>5.5.1</version>
+            </dependency>
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
@@ -70,6 +76,16 @@
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-cmp-generator</artifactId>
+                <version>${parentRevision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.coding.helpers.tool</groupId>
+                <artifactId>tool-cmp-idempotent</artifactId>
+                <version>${parentRevision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.coding.helpers.tool</groupId>
+                <artifactId>tool-cmp-exception</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
             <dependency>
