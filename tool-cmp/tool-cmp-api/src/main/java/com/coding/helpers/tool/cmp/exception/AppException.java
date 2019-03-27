@@ -21,23 +21,17 @@ public class AppException extends RuntimeException {
 
     private static final long serialVersionUID = 8623276252895911775L;
 
-    private Integer errorCode;
+    protected Integer errorCode;
 
-    private String errorMessage;
+    protected String errorMessage;
 
-    public AppException(AppStatus appStatus) {
+    public AppException(AppBaseStatus appStatus) {
         super(appStatus.getErrorMessage());
         this.errorCode = appStatus.getErrorCode();
         this.errorMessage = appStatus.getErrorMessage();
     }
 
-    public AppException(Integer errorCode, String errorMessage) {
-        super(errorMessage);
-        this.errorCode = errorCode;
-        this.errorMessage = errorMessage;
-    }
-
-    public AppException(AppStatus appStatus, String errorMessage) {
+    public AppException(AppBaseStatus appStatus, String errorMessage) {
         super(errorMessage);
         this.errorCode = appStatus.getErrorCode();
         this.errorMessage = errorMessage;

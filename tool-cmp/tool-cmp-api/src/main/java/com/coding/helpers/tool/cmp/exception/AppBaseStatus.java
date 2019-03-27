@@ -12,6 +12,8 @@
  ********************************************************************************/
 package com.coding.helpers.tool.cmp.exception;
 
+import lombok.Getter;
+
 /**
  * 异常基错误码类，各个系统使用枚举继承该类完成错误码的定义.
  *
@@ -22,18 +24,35 @@ package com.coding.helpers.tool.cmp.exception;
  * @version 1.0.0
  * @since 1.0.0
  */
-public interface AppStatus {
+public interface AppBaseStatus {
 
-    /** 系统意料之外的异常. */
-    Integer SYSTEM_UNEXPECTED_ERROR_CODE = 9999999;
+    Integer getErrorCode();
 
-    String SYSTEM_UNEXPECTED_ERROR_MESSAGE = "系统意料之外的异常";
+    String getErrorMessage();
 
-    default Integer getErrorCode() {
-        return 0;
+    AppBaseStatus SUCCESS = success();
+
+    AppBaseStatus SYSTEM_UNEXPECTED_ERROR = systemUnexpectedError();
+
+    /** 操作成功. */
+    static AppBaseStatus success() {
+        return new DefaultStatus(0, "操作成功");
     }
 
-    default String getErrorMessage() {
-        return "处理成功";
+    /** 系统意料之外的异常. */
+    static AppBaseStatus systemUnexpectedError() {
+        return new DefaultStatus(9999999, "系统意料之外的异常");
+    }
+
+    @Getter
+    final class DefaultStatus implements AppBaseStatus {
+        private Integer errorCode;
+
+        private String errorMessage;
+
+        private DefaultStatus(Integer errorCode, String errorMessage) {
+            this.errorCode = errorCode;
+            this.errorMessage = errorMessage;
+        }
     }
 }

@@ -70,22 +70,17 @@
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
-                <artifactId>tool-cmp-api</artifactId>
-                <version>${parentRevision}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-cmp-generator</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
-                <artifactId>tool-cmp-idempotent</artifactId>
+                <artifactId>tool-cmp-api</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
-                <artifactId>tool-cmp-exception</artifactId>
+                <artifactId>tool-cmp-idempotent</artifactId>
                 <version>${parentRevision}</version>
             </dependency>
             <dependency>
