@@ -23,6 +23,7 @@ public interface AppBaseRedisKey {
     /** 非动态RedisKey获取方法. */
     String getKey();
 
+    /** Redis的Key前缀. */
     String getPrefix();
 
     default String getDelimiter() {
