@@ -85,6 +85,11 @@
             </dependency>
             <dependency>
                 <groupId>com.coding.helpers.tool</groupId>
+                <artifactId>tool-cmp-common</artifactId>
+                <version>${parentRevision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.coding.helpers.tool</groupId>
                 <artifactId>tool-util</artifactId>
                 <version>${parentRevision}</version>
             </dependency>

@@ -21,6 +21,7 @@
         <module>tool-cmp-generator</module>
         <module>tool-cmp-api</module>
         <module>tool-cmp-idempotent</module>
+        <module>tool-cmp-common</module>
     </modules>
 
 </project>
