@@ -1,14 +1,12 @@
-host: 127.0.0.1
-
 server:
   port: 8772
 
 spring:
   rabbitmq:
-    host: ${host}
+    host: ${dynamic.host}
     port: 5672
 
 eureka:
   client:
     service-url:
-      defaultZone: http://${host}:8761/eureka/,http://${host}:8762/eureka/,http://${host}:8763/eureka/
+      defaultZone: http://${dynamic.host}:8761/eureka/,http://${dynamic.host}:8762/eureka/,http://${dynamic.host}:8763/eureka/
