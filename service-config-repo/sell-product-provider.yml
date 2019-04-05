@@ -14,8 +14,8 @@ spring:
 #    MySQL8.0的驱动类
 #    driver-class-name: com.mysql.cj.jdbc.Driver
     username: springboot
-    password: SpringBoot@1234
-#    url: jdbc:mysql://${dynamic.host}/selldb?characterEncoding=utf-8&useSSL=false
+    password: SpringBoot@123
+    url: jdbc:mysql://${dynamic.host}/selldb?characterEncoding=utf-8&useSSL=false
     # 是否使用schema.sql建库和data.sql初始化数据，默认true
     initialization-mode: never
   jpa:
