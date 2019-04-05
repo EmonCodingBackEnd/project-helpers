@@ -1,6 +1,12 @@
 server:
   port: 8751
 
+eureka:
+  client:
+    # 启用健康检查应该放到application.yml配置，而不应该是bootstrap.yml，否则可能出现 UNKNOWN 的注册状态
+    healthcheck:
+      enabled: true
+
 spring:
   datasource:
 #    MySQL5.7的驱动类
