@@ -1,3 +1,5 @@
+env: none
+
 server:
   port: 8751
 
