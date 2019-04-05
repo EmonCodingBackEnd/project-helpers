@@ -1,5 +1,0 @@
-env: prod
-eureka:
-  client:
-    service-url:
-      defaultZone: http://${host}:8761/eureka/,http://${host}:8762/eureka/,http://${host}:8763/eureka/
