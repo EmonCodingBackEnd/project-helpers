@@ -1,0 +1,9 @@
+env: prod2
+
+server:
+  port: 8782
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${dynamic.host}:8761/eureka/,http://${dynamic.host}:8762/eureka/,http://${dynamic.host}:8763/eureka/

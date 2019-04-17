@@ -1,0 +1,21 @@
+env: none
+
+server:
+  port: 8781
+
+spring:
+  rabbitmq:
+    host: ${dynamic.host}
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+
+eureka:
+  client:
+    # 启用健康检查应该放到application.yml配置，而不应该是bootstrap.yml，否则可能出现 UNKNOWN 的注册状态
+    healthcheck:
+      enabled: true
+
+logging:
+  config: classpath:logback-spring-${spring.profiles.active}.xml
