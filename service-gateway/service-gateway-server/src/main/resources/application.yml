@@ -17,5 +17,13 @@ eureka:
     healthcheck:
       enabled: true
 
+zuul:
+  routes:
+#    myProduct:
+#      path: /product/**
+#      serviceId: sell-product-provider
+    # 简单写法
+    sell-product-provider: /product/**
+
 logging:
   config: classpath:logback-spring-${spring.profiles.active}.xml
