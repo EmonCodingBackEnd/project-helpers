@@ -19,11 +19,13 @@ eureka:
 
 zuul:
   routes:
-#    myProduct:
-#      path: /product/**
-#      serviceId: sell-product-provider
-    # 简单写法
-    sell-product-provider: /product/**
+    myProduct:
+      path: /product/**
+      serviceId: sell-product-provider
+      # 设置为空，不配置敏感头
+      sensitiveHeaders:
+      # 简单写法
+#    sell-product-provider: /product/**
 
 logging:
   config: classpath:logback-spring-${spring.profiles.active}.xml
