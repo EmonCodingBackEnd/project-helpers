@@ -41,7 +41,6 @@ eureka:
 #    enabled: false
 
 # feign.RetryableException: Read timed out executing POST
-#ribbon:
-#  ReadTimeout: 20000
-#  ConnectTimeout: 20000
-
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
