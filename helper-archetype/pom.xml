@@ -26,6 +26,9 @@
 
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
+        <dynamic.host>repo.emon.vip</dynamic.host>
+        <dynamic.url>http://${dynamic.host}</dynamic.url>
+        <dynamic.sslurl>https://${dynamic.host}</dynamic.sslurl>
     </properties>
 
     <dependencyManagement>
@@ -61,5 +64,71 @@
         <!-- 引入一方包 beg -->
         <!-- 引入一方包 end -->
     </dependencies>
+
+    <profiles>
+        <profile>
+            <!--与虚拟机nexus私服不同台服务器时-->
+            <id>virtual-client</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>nexus-releases</id>
+                    <url>${dynamic.url}/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>nexus-snapshots</id>
+                    <url>${dynamic.url}/repository/maven-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus-releases</id>
+                    <url>${dynamic.url}/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>nexus-snapshots</id>
+                    <url>${dynamic.url}/repository/maven-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+            <distributionManagement>
+                <repository>
+                    <id>nexus-releases</id>
+                    <name>nexus release Repository</name>
+                    <url>${dynamic.url}/repository/maven-releases/</url>
+                </repository>
+                <snapshotRepository>
+                    <id>nexus-snapshots</id>
+                    <name>nexus snapshots Repository</name>
+                    <url>${dynamic.url}/repository/maven-snapshots/</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+    </profiles>
 
 </project>

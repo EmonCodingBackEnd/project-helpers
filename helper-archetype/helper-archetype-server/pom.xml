@@ -21,6 +21,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--为了节省虚拟机资源，一般情况下不开启 CONFIG 服务-->
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-config-client</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -33,6 +38,20 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+        <!--<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+        </dependency>-->
+        <!--spring-cloud-starter-bus-amqp 包含 spring-cloud-starter-stream-rabbit-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+        </dependency>
+        <!--spring-cloud-starter-stream-rabbit 包含 spring-cloud-stream-binder-rabbit
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
@@ -60,23 +79,36 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-test-support</artifactId>
+            <scope>test</scope>
+        </dependency>
         <!-- 引入三方包 end -->
 
         <!-- 引入二方包 beg -->
+        <dependency>
+            <groupId>com.coding.helpers.plugin</groupId>
+            <artifactId>plugin-gray-deploy</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.coding.helpers.tool</groupId>
             <artifactId>tool-cmp-generator</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.coding.helpers.plugin</groupId>
-            <artifactId>plugin-gray-deploy</artifactId>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-idempotent</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-common</artifactId>
         </dependency>
         <!-- 引入二方包 end -->
 
         <!-- 引入一方包 beg -->
         <dependency>
             <groupId>com.coding.helpers</groupId>
-            <artifactId>helper-archetype-api</artifactId>
+            <artifactId>helper-archetype-common</artifactId>
         </dependency>
         <!-- 引入一方包 end -->
     </dependencies>
