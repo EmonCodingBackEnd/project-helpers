@@ -39,6 +39,21 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- 引入二方包 beg -->
+        <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coding.helpers.plugin</groupId>
+            <artifactId>plugin-gray-deploy</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-cmp-common</artifactId>
+        </dependency>
+        <!-- 引入二方包 end -->
     </dependencies>
 
     <build>
