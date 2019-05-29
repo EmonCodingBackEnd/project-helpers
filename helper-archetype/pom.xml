@@ -65,6 +65,7 @@
         <!-- 引入一方包 end -->
     </dependencies>
 
+    <!--避免到用户的.m2目录下寻找settings.xml找不到的问题-->
     <build>
         <plugins>
             <plugin>
