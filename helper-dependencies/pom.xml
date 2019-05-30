@@ -47,6 +47,13 @@
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>3.10.3</version>
             </dependency>
+            <!--log4jdbc 是在 jdbc 层的一个日志框架，可以将占位符与参数全部合并在一起显示-->
+            <dependency>
+                <groupId>com.googlecode.log4jdbc</groupId>
+                <artifactId>log4jdbc</artifactId>
+                <version>1.2</version>
+                <scope>runtime</scope>
+            </dependency>
             <!-- 定义三方包 end -->
 
             <!-- 定义二方包 beg -->
