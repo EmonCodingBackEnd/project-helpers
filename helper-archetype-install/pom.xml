@@ -36,7 +36,7 @@
             </plugins>
         </pluginManagement>
 
-        <!--手动添加-->
+        <!--手动添加 beg-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -49,6 +49,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <!--手动添加 end-->
     </build>
 
     <description>Parent pom providing dependency and plugin management for applications
@@ -104,7 +105,7 @@
             </properties>
         其次，最外层的pom.xml（**/archetype-resources/pom.xml）要添加多模块的描述：
             <modules>
-                <module>${rootArtifactId}-api</module>
+                <module>${rootArtifactId}-client</module>
                 <module>${rootArtifactId}-common</module>
                 <module>${rootArtifactId}-server</module>
             </modules>

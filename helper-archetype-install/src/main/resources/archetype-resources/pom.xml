@@ -52,17 +52,6 @@
         </dependencies>
     </dependencyManagement>
 
-    <dependencies>
-        <!-- 引入三方包 beg -->
-        <!-- 引入三方包 end -->
-
-        <!-- 引入二方包 beg -->
-        <!-- 引入二方包 end -->
-
-        <!-- 引入一方包 beg -->
-        <!-- 引入一方包 end -->
-    </dependencies>
-
     <profiles>
         <profile>
             <!--与虚拟机nexus私服不同台服务器时-->
