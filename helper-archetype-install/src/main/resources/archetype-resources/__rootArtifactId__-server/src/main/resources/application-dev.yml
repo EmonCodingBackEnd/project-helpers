@@ -1,0 +1,5 @@
+env: dev
+
+eureka:
+  instance:
+    prefer-ip-address: true

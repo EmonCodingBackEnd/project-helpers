@@ -8,14 +8,29 @@ spring:
     name: '@project.build.finalName@'
   profiles:
     active: dev
+#  为了节省虚拟机资源，一般情况下不开启 CONFIG 服务
+#  cloud:
+#    config:
+#      # 如果设置为true，会覆盖application开头的yml文件内容；如果设置为false，不会启用配置中心内容。
+#      enabled: false
+#      discovery:
+#        enabled: true
+#        # 这里的service-id的值大小写都可以
+#        service-id: CONFIG
+#      profile: ${spring.profiles.active}
+#      username: user
+#      password: 123456
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 eureka:
   instance:
     metadataMap:
       tag: offline
       weight: 100
   client:
-    healthcheck:
-      enabled: true
     serviceUrl:
       defaultZone: ${dynamic.url}:8761/eureka/
       loadbalancer:
@@ -26,7 +41,7 @@ eureka:
 #    enabled: false
 
 # feign.RetryableException: Read timed out executing POST
-ribbon:
-  ReadTimeout: 20000
-  ConnectTimeout: 20000
+#ribbon:
+#  ReadTimeout: 20000
+#  ConnectTimeout: 20000
 

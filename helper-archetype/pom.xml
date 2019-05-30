@@ -12,7 +12,7 @@
     <name>helper-archetype</name>
 
     <modules>
-        <module>helper-archetype-api</module>
+        <module>helper-archetype-client</module>
         <module>helper-archetype-common</module>
         <module>helper-archetype-server</module>
     </modules>
@@ -42,7 +42,7 @@
             <!-- 定义一方包 beg -->
             <dependency>
                 <groupId>com.coding.helpers</groupId>
-                <artifactId>helper-archetype-api</artifactId>
+                <artifactId>helper-archetype-client</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>

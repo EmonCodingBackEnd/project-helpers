@@ -52,6 +52,17 @@
         <appender-ref ref="monitor_exception"/>
     </logger>
 
+    <!--记录连接打开、关闭等信息，有利于调试数据库连接相关问题-->
+    <logger name="jdbc.connection" level="OFF"/>
+    <!--记录除ResultSet之外的所有JDBC调试信息，会产生大量的记录，有利于调试跟踪具体JDBC问题-->
+    <logger name="jdbc.audit" level="OFF"/>
+    <!--会产生更多的记录信息，因为记录了ResultSet的信息-->
+    <logger name="jdbc.resultset" level="OFF"/>
+    <!--仅记录sql-->
+    <logger name="jdbc.sqlonly" level="OFF"/>
+    <!--记录sql以及耗时信息-->
+    <logger name="jdbc.sqltiming" level="INFO"/>
+
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="desc_normal"/>

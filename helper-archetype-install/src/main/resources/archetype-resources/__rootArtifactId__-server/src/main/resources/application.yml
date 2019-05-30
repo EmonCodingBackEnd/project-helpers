@@ -1,20 +1,33 @@
+env: none
+
+server:
+  port: 8751
+
+eureka:
+  client:
+    # 启用健康检查应该放到application.yml配置，而不应该是bootstrap.yml，否则可能出现 UNKNOWN 的注册状态
+    healthcheck:
+      enabled: true
+
 spring:
   datasource:
-#    去掉MySQL5.7的驱动
-    driver-class-name: com.mysql.jdbc.Driver
-    # 添加MySQL8.0的驱动类
+#    MySQL5.7的驱动类
+#    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+#    MySQL8.0的驱动类
 #    driver-class-name: com.mysql.cj.jdbc.Driver
     username: springboot
     password: SpringBoot@123
-    url: jdbc:mysql://${dynamic.host}/selldb?characterEncoding=utf-8&useSSL=false
+#    url: jdbc:mysql://${dynamic.host}/selldb?characterEncoding=utf-8&useSSL=false
+    url: jdbc:log4jdbc:mysql://${dynamic.host}/selldb?characterEncoding=utf-8&useSSL=false
     # 是否使用schema.sql建库和data.sql初始化数据，默认true
     initialization-mode: never
   jpa:
-    show-sql: true
+    show-sql: false
     hibernate:
       ddl-auto: none
-#    解决MySQL8.0下错误:Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
-#    database-platform: org.hibernate.dialect.MySQLDialect
+#      解决MySQL8.0下错误:Access to DialectResolutionInfo cannot be null when 'hibernate.dialect' not set
+#      database-platform: org.hibernate.dialect.MySQLDialect
   jackson:
     default-property-inclusion: non_null
   servlet:
@@ -46,12 +59,50 @@ spring:
 #      master: mymaster
 #      nodes: ${dynamic.host}:26379,${dynamic.host}:26378,${dynamic.host}:26377
 
+  cloud:
+    stream:
+#      这个binders的配置，目前来看不是必需的
+#      binders:
+#        rabbit_cluster:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                host: ${dynamic.host}
+#                port: 5672
+#                username: guest
+#                password: guest
+#                virtual-host: /
+      bindings:
+        output_channel:
+          destination: stream-exchange
+          group: stream-queue
+          content-type: application/json
+        output_channel2:
+          destination: stream-exchange2
+          group: stream-queue2
+          content-type: application/json
+#          binder: rabbit_cluster
+        input_channel:
+          destination: stream-exchange
+          group: stream-queue
+          content-type: application/json
+#          binder: rabbit_cluster
+        input_channel2:
+          destination: stream-exchange2
+          group: stream-queue2
+          content-type: application/json
+#          binder: rabbit_cluster
+
 helper:
   plugin-gray-deploy:
     request:
       rule:
         data: 1#20190219
         transfer-mode: override_first
-  tool-cmp-api:
+  tool-cmp-idempotent:
     nonidempotent:
-      redis-key: helper:tool:cmp:api:nonidempotent
+      redis-key: helper:tool:cmp:client:nonidempotent
+
+logging:
+  config: classpath:logback-spring-${spring.profiles.active}.xml
