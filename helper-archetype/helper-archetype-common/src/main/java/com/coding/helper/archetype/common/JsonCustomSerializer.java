@@ -10,7 +10,7 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20190331-01         Rushing0711     M201903311952 新建文件
  ********************************************************************************/
-package com.coding.helper.common;
+package com.coding.helper.archetype.common;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonProcessingException;

@@ -1,4 +1,4 @@
-package com.coding;
+package com.coding.helper.archetype;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

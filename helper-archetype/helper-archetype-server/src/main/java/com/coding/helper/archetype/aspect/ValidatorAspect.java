@@ -34,7 +34,7 @@ public class ValidatorAspect {
 
     @Autowired private Validator validator;
 
-    @Pointcut("execution(* com.coding.helper.archetype.service..*.*(..))")
+    @Pointcut("execution(* com.coding.helper.service..*.*(..))")
     public void publicMethods() {}
 
     @Before("publicMethods()")

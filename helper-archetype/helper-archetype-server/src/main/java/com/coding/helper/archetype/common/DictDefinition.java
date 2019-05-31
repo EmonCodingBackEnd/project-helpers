@@ -12,8 +12,8 @@
  ********************************************************************************/
 package com.coding.helper.archetype.common;
 
-import com.coding.helpers.tool.cmp.exception.AppException;
 import com.coding.helper.archetype.exception.AppStatus;
+import com.coding.helpers.tool.cmp.exception.AppException;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

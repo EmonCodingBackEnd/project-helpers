@@ -1,4 +1,4 @@
-package com.coding.helpers;
+package com.coding.helper.archetype;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
