@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.coding.helpers</groupId>
-        <artifactId>helper-archetype</artifactId>
+        <groupId>com.coding.helpers.archetype</groupId>
+        <artifactId>helper-archetype-cloud</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
