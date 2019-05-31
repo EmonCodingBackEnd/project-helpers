@@ -15,8 +15,8 @@
  ********************************************************************************/
 package ${package}.exception;
 
-import ${groupId}.tool.cmp.api.AppResponse;
-import ${groupId}.tool.cmp.exception.AppException;
+import com.coding.helpers.tool.cmp.api.AppResponse;
+import com.coding.helpers.tool.cmp.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

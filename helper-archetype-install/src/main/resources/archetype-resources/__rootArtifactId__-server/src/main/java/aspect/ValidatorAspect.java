@@ -16,8 +16,8 @@
 package ${package}.aspect;
 
 import ${package}.exception.AppStatus;
-import ${groupId}.tool.cmp.api.AppRequest;
-import ${groupId}.tool.cmp.exception.AppException;
+import com.coding.helpers.tool.cmp.api.AppRequest;
+import com.coding.helpers.tool.cmp.exception.AppException;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -37,7 +37,7 @@ public class ValidatorAspect {
 
     @Autowired private Validator validator;
 
-    @Pointcut("execution(* com.coding.helper.service..*.*(..))")
+    @Pointcut("execution(* ${package}.service..*.*(..))")
     public void publicMethods() {}
 
     @Before("publicMethods()")

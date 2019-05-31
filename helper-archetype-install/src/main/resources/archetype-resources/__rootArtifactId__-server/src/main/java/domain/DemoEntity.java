@@ -47,7 +47,7 @@ public class DemoEntity extends BaseEntity {
     @GeneratedValue(generator = "idGenerator")
     @GenericGenerator(
         name = "idGenerator",
-        strategy = "${groupId}.tool.cmp.generator.SnowFlakeIdStrategy"
+        strategy = "com.coding.helpers.tool.cmp.generator.SnowFlakeIdStrategy"
     )
     private Long id;
 

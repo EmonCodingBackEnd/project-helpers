@@ -15,7 +15,7 @@
  ********************************************************************************/
 package ${package}.common.cache.redis;
 
-import ${groupId}.tool.cmp.common.cache.AppBaseRedisKey;
+import com.coding.helpers.tool.cmp.common.cache.AppBaseRedisKey;
 import ${package}.common.ConstantDefinition;
 
 public interface AppDynamicRedisKey extends AppBaseRedisKey {

@@ -92,6 +92,13 @@
     </distributionManagement>
 </project>
         <!--
+        首先，进入 helper-archetype 项目跟目录下，执行命令：
+        mvn archetype:create-from-project
+        然后，拷贝target/generated-sources/archetype目录下的src和pom.xml文件到helper-archetype-install
+        最后，按照心得体会修改。
+        -->
+
+        <!--
         心得体会：
         1、使用自定义archetype创建多模块新项目，最外层pom.xml乱码的问题，如何解决？
         被这个问题折磨了接近两天，机缘巧合得知如下解决方式：
@@ -121,7 +128,15 @@
         <!-- 引入一方包 end -->
         <!--</dependencies>
         这样，使用自定义archetype创建项目时，最外层pom.xml不会被再次解析，也就不会出现乱码问题了。
+
         2、其他修改
         文件pom.xml(**/archetype-resources/__rootArtifactId__-server/pom.xml)修改如下：
         helper-archetype-provider => ${rootArtifactId}-provider
+
+        3、注意(**/archetype-resources/__rootArtifactId__-server/)项目下的 resources 目录下文件
+        -->
+
+        <!--
+        进入 helper-archetype-install 项目根目录，执行如下命令：
+        mvn clean install -Dmaven.test.skip=true
         -->

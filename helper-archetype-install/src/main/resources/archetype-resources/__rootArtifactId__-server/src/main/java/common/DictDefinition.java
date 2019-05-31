@@ -16,7 +16,7 @@
 package ${package}.common;
 
 import ${package}.exception.AppStatus;
-import ${groupId}.tool.cmp.exception.AppException;
+import com.coding.helpers.tool.cmp.exception.AppException;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

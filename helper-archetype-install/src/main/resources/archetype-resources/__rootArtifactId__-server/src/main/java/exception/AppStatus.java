@@ -15,7 +15,7 @@
  ********************************************************************************/
 package ${package}.exception;
 
-import ${groupId}.tool.cmp.exception.AppBaseStatus;
+import com.coding.helpers.tool.cmp.exception.AppBaseStatus;
 import lombok.Getter;
 
 /**

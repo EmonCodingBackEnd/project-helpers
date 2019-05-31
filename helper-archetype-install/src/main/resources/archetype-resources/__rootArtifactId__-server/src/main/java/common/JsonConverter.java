@@ -17,7 +17,7 @@ package ${package}.common;
 
 import ${package}.common.param.ShopPrintSetupParam;
 import ${package}.exception.AppStatus;
-import ${groupId}.tool.cmp.exception.AppException;
+import com.coding.helpers.tool.cmp.exception.AppException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
