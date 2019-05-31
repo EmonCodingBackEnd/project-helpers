@@ -1,7 +1,10 @@
 env: none
 
 server:
-  port: 8751
+  port: 8080
+  tomcat:
+    # 处理MultipartFile在Linux系统下找不到目录 /tmp/tomcat.<一串数字>.<port>/work/Tomcat/localhost/<项目名称>
+    basedir: /home/emon/saas/@project.parent.artifactId@/@project.build.finalName@/tmp
 
 eureka:
   client:

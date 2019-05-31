@@ -103,11 +103,25 @@
                 <maven.compiler.source>${java.version}</maven.compiler.source>
                 <maven.compiler.target>${java.version}</maven.compiler.target>
             </properties>
-        其次，最外层的pom.xml（**/archetype-resources/pom.xml）要添加多模块的描述：
+        其次，最外层的pom.xml(**/archetype-resources/pom.xml)要添加多模块的描述：
             <modules>
                 <module>${rootArtifactId}-client</module>
                 <module>${rootArtifactId}-common</module>
                 <module>${rootArtifactId}-server</module>
             </modules>
+            与
+        <dependencies>-->
+        <!-- 引入三方包 beg -->
+        <!-- 引入三方包 end -->
+
+        <!-- 引入二方包 beg -->
+        <!-- 引入二方包 end -->
+
+        <!-- 引入一方包 beg -->
+        <!-- 引入一方包 end -->
+        <!--</dependencies>
         这样，使用自定义archetype创建项目时，最外层pom.xml不会被再次解析，也就不会出现乱码问题了。
+        2、其他修改
+        文件pom.xml(**/archetype-resources/__rootArtifactId__-server/pom.xml)修改如下：
+        helper-archetype-provider => ${rootArtifactId}-provider
         -->
