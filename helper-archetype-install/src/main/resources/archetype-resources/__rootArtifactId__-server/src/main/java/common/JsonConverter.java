@@ -15,17 +15,19 @@
  ********************************************************************************/
 package ${package}.common;
 
-import ${package}.common.param.ShopPrintSetupParam;
-import ${package}.exception.AppStatus;
 import com.coding.helpers.tool.cmp.exception.AppException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
+import ${package}.exception.AppStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.io.IOException;
 
 /**
  * JSON转换器.
@@ -50,36 +52,36 @@ public class JsonConverter {
         JsonConverter.objectMapper = objectMapper;
     }
 
-    public static ShopPrintSetupParam toShopPrintSetupParam(String paramValue) {
-        ShopPrintSetupParam param;
+    public static <T> T fromJson(String json, Class<T> clazz) {
+        T result;
         try {
-            param = gson.fromJson(paramValue, new TypeToken<ShopPrintSetupParam>() {}.getType());
+            result = gson.fromJson(json, new TypeToken<T>() {}.getType());
         } catch (JsonSyntaxException e) {
-            log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", paramValue), e);
+            log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", json), e);
             throw new AppException(AppStatus.FROM_JSON_ERRPR);
         }
-        return param;
-    }
-
-    public static String fromShopPrintSetupParam(ShopPrintSetupParam printParam) {
-        String paramValue;
-        try {
-            paramValue = objectMapper.writeValueAsString(printParam);
-        } catch (JsonProcessingException e) {
-            log.error(String.format("【JSON转换错误】对象转换到JSON错误, object=%s", printParam), e);
-            throw new AppException(AppStatus.TO_JSON_ERRPR);
-        }
-        return paramValue;
+        return result;
     }
 
     public static String toJson(Object object) {
-        String paramValue;
+        String result;
         try {
-            paramValue = objectMapper.writeValueAsString(object);
+            result = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             log.error(String.format("【JSON转换错误】对象转换到JSON错误, object=%s", object), e);
             throw new AppException(AppStatus.TO_JSON_ERRPR);
         }
-        return paramValue;
+        return result;
+    }
+
+    public static JsonNode fromJson(String json) {
+        JsonNode jsonNode;
+        try {
+            jsonNode = objectMapper.readTree(json);
+        } catch (IOException e) {
+            log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", json), e);
+            throw new AppException(AppStatus.FROM_JSON_ERRPR);
+        }
+        return jsonNode;
     }
 }
