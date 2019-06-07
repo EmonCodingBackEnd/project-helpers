@@ -27,24 +27,43 @@ import java.util.List;
 public enum AppRedisKey implements AppDynamicRedisKey {
     /** 获取动态key的实例对象. */
     DYNAMIC("DYNAMIC", "示例"),
-    EXAMPLE("example", "示例"),
-    ;
+    EXAMPLE("serverName", "groupName", "example", "示例");
 
     private List<String> keyParts = new ArrayList<>();
     private String description;
 
-    AppRedisKey(String serverName, String description) {
+    /** 不建议使用该构造器，仅为DYNAMIC使用而定义. */
+    AppRedisKey(String purpose, String description) {
+        keyParts.add(StringUtils.trimLeadingWhitespace(purpose));
+        this.description = description;
+    }
+
+    AppRedisKey(String serverName, String groupName, String purpose, String description) {
         keyParts.add(StringUtils.trimLeadingWhitespace(serverName));
+        keyParts.add(StringUtils.trimLeadingWhitespace(groupName));
+        keyParts.add(StringUtils.trimLeadingWhitespace(purpose));
         this.description = description;
     }
 
     @Override
     public String getKey() {
+        valid();
+        return combineKeyParts(true, keyParts.toArray(new String[] {}));
+    }
+
+    @Override
+    public String getKey(String keyVar) {
+        valid();
+        List<String> newKeyParts = new ArrayList<>(keyParts);
+        newKeyParts.add(StringUtils.trimLeadingWhitespace(keyVar));
+        return combineKeyParts(false, newKeyParts.toArray(new String[] {}));
+    }
+
+    private void valid() {
         if (this == DYNAMIC) {
             log.error("枚举常量 DYNAMIC 是调用父类定义的方法动态获取RedisKey的中间常量，不支持直接调用getKey()方法");
             throw new RuntimeException(
                     "枚举常量 DYNAMIC 是调用父类定义的方法动态获取RedisKey的中间常量，不支持直接调用getKey()方法");
         }
-        return combineKeyParts(true, keyParts.toArray());
     }
 }

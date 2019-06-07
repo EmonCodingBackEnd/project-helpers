@@ -18,7 +18,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import com.google.gson.reflect.TypeToken;
 import helper.archetype.cloud.exception.AppStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,7 @@ public class JsonConverter {
     public static <T> T fromJson(String json, Class<T> clazz) {
         T result;
         try {
-            result = gson.fromJson(json, new TypeToken<T>() {}.getType());
+            result = gson.fromJson(json, clazz);
         } catch (JsonSyntaxException e) {
             log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", json), e);
             throw new AppException(AppStatus.FROM_JSON_ERRPR);
