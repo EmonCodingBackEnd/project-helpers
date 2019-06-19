@@ -39,8 +39,8 @@ public interface JsonCustomSerializer {
     }
 
     class BigDecimal2SimpleStringSerializer extends JsonSerializer<BigDecimal> {
-        // 默认的格式化字符样式 “#.00”  还可以是像“#.0000”
-        private static final String DEFAULT_FORMAT_PATTERN = "#.00";
+        // 默认的格式化字符样式 “#.##”  还可以是像“#.####”
+        private static final String DEFAULT_FORMAT_PATTERN = "#.##";
 
         private DecimalFormat decimalFormat = new DecimalFormat(DEFAULT_FORMAT_PATTERN);
 

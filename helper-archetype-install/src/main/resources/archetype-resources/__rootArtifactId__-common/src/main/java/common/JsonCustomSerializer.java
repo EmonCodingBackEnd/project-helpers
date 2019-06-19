@@ -42,8 +42,8 @@ public interface JsonCustomSerializer {
     }
 
     class BigDecimal2SimpleStringSerializer extends JsonSerializer<BigDecimal> {
-        // 默认的格式化字符样式 “${symbol_pound}.00”  还可以是像“${symbol_pound}.0000”
-        private static final String DEFAULT_FORMAT_PATTERN = "${symbol_pound}.00";
+        // 默认的格式化字符样式 “${symbol_pound}.${symbol_pound}${symbol_pound}”  还可以是像“${symbol_pound}.${symbol_pound}${symbol_pound}${symbol_pound}${symbol_pound}”
+        private static final String DEFAULT_FORMAT_PATTERN = "${symbol_pound}.${symbol_pound}${symbol_pound}";
 
         private DecimalFormat decimalFormat = new DecimalFormat(DEFAULT_FORMAT_PATTERN);
 
