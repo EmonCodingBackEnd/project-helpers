@@ -1,6 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
 /*
  * 文件名称：Dicts.java
  * 系统名称：[系统名称]
@@ -13,10 +10,10 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20190309-01         Rushing0711     M201903091959 新建文件
  ********************************************************************************/
-package ${package}.common;
+package helper.archetype.cloud.common;
 
-import ${package}.exception.AppStatus;
 import com.coding.helpers.tool.cmp.exception.AppException;
+import helper.archetype.cloud.exception.AppStatus;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +23,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 定义字典.
  *
- * <p>创建时间: <font style="color:${symbol_pound}00FFFF">20190309 19:59</font><br>
+ * <p>创建时间: <font style="color:#00FFFF">20190309 19:59</font><br>
  * 有两种定义形式：1、接口；2、枚举。如果需要校验数据是否合法，推荐枚举的定义方式。
  *
  * @author Rushing0711
@@ -94,6 +91,24 @@ public interface DictDefinition {
         Integer NO = 0;
     }
 
+    /** 【仅定义在代码】是与否；1-是;0-否. */
+    interface YesOrNo {
+        String NAME = "yes_or_no";
+        /** 是. */
+        Integer YES = 1;
+        /** 否. */
+        Integer NO = 0;
+    }
+
+    /** 【代码和数据库】是否启用系统参数 */
+    interface Enabled {
+        String NAME = "enabled";
+        /** 启用 */
+        Integer ENABLED = 1;
+        /** 停用 */
+        Integer DISABLED = 0;
+    }
+
     /** 【仅定义在代码】商品上下架状态. */
     @Getter
     @RequiredArgsConstructor
@@ -105,14 +120,5 @@ public interface DictDefinition {
         ;
         public static final String NAME = "product_status";
         @NonNull private Integer value;
-    }
-
-    /** 【仅定义在代码】是与否；1-是;0-否. */
-    interface YesOrNo {
-        String NAME = "yes_or_no";
-        /** 是. */
-        Integer YES = 1;
-        /** 否. */
-        Integer NO = 0;
     }
 }

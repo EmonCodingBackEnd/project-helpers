@@ -27,14 +27,16 @@ import java.util.List;
 public enum AppRedisKey implements AppDynamicRedisKey {
     /** 获取动态key的实例对象. */
     DYNAMIC("DYNAMIC", "示例"),
-    EXAMPLE("serverName", "groupName", "example", "示例");
+    EXAMPLE("serverName", "groupName", "example", "示例"),
+    MANAGE_PARAM_CACHE("manage", "param", "cache", "系统参数缓存"),
+    ;
 
     private List<String> keyParts = new ArrayList<>();
     private String description;
 
     /** 不建议使用该构造器，仅为DYNAMIC使用而定义. */
-    AppRedisKey(String purpose, String description) {
-        keyParts.add(StringUtils.trimLeadingWhitespace(purpose));
+    AppRedisKey(String serverName, String description) {
+        keyParts.add(StringUtils.trimLeadingWhitespace(serverName));
         this.description = description;
     }
 

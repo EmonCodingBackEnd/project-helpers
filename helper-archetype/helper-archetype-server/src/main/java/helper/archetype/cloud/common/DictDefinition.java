@@ -12,8 +12,8 @@
  ********************************************************************************/
 package helper.archetype.cloud.common;
 
-import helper.archetype.cloud.exception.AppStatus;
 import com.coding.helpers.tool.cmp.exception.AppException;
+import helper.archetype.cloud.exception.AppStatus;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -91,6 +91,24 @@ public interface DictDefinition {
         Integer NO = 0;
     }
 
+    /** 【仅定义在代码】是与否；1-是;0-否. */
+    interface YesOrNo {
+        String NAME = "yes_or_no";
+        /** 是. */
+        Integer YES = 1;
+        /** 否. */
+        Integer NO = 0;
+    }
+
+    /** 【代码和数据库】是否启用系统参数 */
+    interface Enabled {
+        String NAME = "enabled";
+        /** 启用 */
+        Integer ENABLED = 1;
+        /** 停用 */
+        Integer DISABLED = 0;
+    }
+
     /** 【仅定义在代码】商品上下架状态. */
     @Getter
     @RequiredArgsConstructor
@@ -102,14 +120,5 @@ public interface DictDefinition {
         ;
         public static final String NAME = "product_status";
         @NonNull private Integer value;
-    }
-
-    /** 【仅定义在代码】是与否；1-是;0-否. */
-    interface YesOrNo {
-        String NAME = "yes_or_no";
-        /** 是. */
-        Integer YES = 1;
-        /** 否. */
-        Integer NO = 0;
     }
 }
