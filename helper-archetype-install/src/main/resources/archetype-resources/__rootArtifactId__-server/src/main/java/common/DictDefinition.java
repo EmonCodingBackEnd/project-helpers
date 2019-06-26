@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 /*
  * 文件名称：Dicts.java
  * 系统名称：[系统名称]
@@ -10,10 +13,10 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20190309-01         Rushing0711     M201903091959 新建文件
  ********************************************************************************/
-package helper.archetype.cloud.common;
+package ${package}.common;
 
 import com.coding.helpers.tool.cmp.exception.AppException;
-import helper.archetype.cloud.exception.AppStatus;
+import ${package}.exception.AppStatus;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +26,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 定义字典.
  *
- * <p>创建时间: <font style="color:#00FFFF">20190309 19:59</font><br>
+ * <p>创建时间: <font style="color:${symbol_pound}00FFFF">20190309 19:59</font><br>
  * 有两种定义形式：1、接口；2、枚举。如果需要校验数据是否合法，推荐枚举的定义方式。
  *
  * @author Rushing0711

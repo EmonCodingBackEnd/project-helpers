@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 /*
  * 文件名称：Converter.java
  * 系统名称：[系统名称]
@@ -10,7 +13,7 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20190311-01         Rushing0711     M201903111727 新建文件
  ********************************************************************************/
-package helper.archetype.cloud.common;
+package ${package}.common;
 
 import com.coding.helpers.tool.cmp.exception.AppException;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,7 +21,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import helper.archetype.cloud.exception.AppStatus;
+import ${package}.exception.AppStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,7 +32,7 @@ import java.lang.reflect.Type;
 /**
  * JSON转换器.
  *
- * <p>创建时间: <font style="color:#00FFFF">20190311 17:27</font><br>
+ * <p>创建时间: <font style="color:${symbol_pound}00FFFF">20190311 17:27</font><br>
  * [请在此输入功能详述]
  *
  * @author Rushing0711
