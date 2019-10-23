@@ -34,10 +34,16 @@
             <artifactId>dozer</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--用于数据绑定的依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
+        </dependency>
+        <!--监控-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <!--解析JSON到对象推荐-->
         <dependency>
