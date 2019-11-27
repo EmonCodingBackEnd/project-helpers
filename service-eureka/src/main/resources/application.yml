@@ -1,6 +1,8 @@
 eureka:
   client:
+    # 是否将自己注册到 Eureka Server，默认是 true。由于当前应用是单节点的 Eureka Server，设置为 false。
     register-with-eureka: false
+    # 标识是否从 Eureka Server 获取注册信息，默认是 true。如果这是一个单节点的 Eureka Server，不需要同步其他节点的数据，设置为 false。
     fetch-registry: false
   server:
     enable-self-preservation: false
