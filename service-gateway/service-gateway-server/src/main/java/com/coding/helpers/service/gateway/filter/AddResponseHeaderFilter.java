@@ -18,7 +18,7 @@ public class AddResponseHeaderFilter extends ZuulFilter {
 
     @Override
     public int filterOrder() {
-        return FilterConstants.SEND_RESPONSE_FILTER_ORDER - 1;
+        return FilterConstants.SEND_RESPONSE_FILTER_ORDER - 3;
     }
 
     @Override
