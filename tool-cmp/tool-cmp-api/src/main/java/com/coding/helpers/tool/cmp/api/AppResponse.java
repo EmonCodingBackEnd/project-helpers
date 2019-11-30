@@ -18,8 +18,8 @@ public abstract class AppResponse<T> implements Serializable {
 
     protected T data;
 
-    public static AppResponse getDefaultResponse() {
-        return new AppResponse() {
+    public static <T> AppResponse<T> getDefaultResponse() {
+        return new AppResponse<T>() {
 
             private static final long serialVersionUID = 785148869016223225L;
         };
