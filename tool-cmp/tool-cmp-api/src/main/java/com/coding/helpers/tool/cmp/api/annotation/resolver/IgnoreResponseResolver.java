@@ -1,7 +1,7 @@
 package com.coding.helpers.tool.cmp.api.annotation.resolver;
 
 import com.coding.helpers.tool.cmp.api.AppResponse;
-import com.coding.helpers.tool.cmp.api.annotation.IgnoreResponseAdvice;
+import com.coding.helpers.tool.cmp.api.annotation.IgnoreResponse;
 import com.coding.helpers.tool.cmp.exception.AppBaseStatus;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
  * @since 1.0.0
  */
 @RestControllerAdvice
-public class IgnoreResponseAdviceResolver implements ResponseBodyAdvice<Object> {
+public class IgnoreResponseResolver implements ResponseBodyAdvice<Object> {
 
     /**
      * 判断是否需要对相应进行处理.
@@ -40,16 +40,16 @@ public class IgnoreResponseAdviceResolver implements ResponseBodyAdvice<Object> 
     @SuppressWarnings("all")
     public boolean supports(
             MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
-        // 如果当前方法所在的类标识了 @IgnoreResponseAdvice 注解，不需要处理
-        boolean classHasIgnoreResponseAdviceAnnotation =
-                methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class);
-        if (classHasIgnoreResponseAdviceAnnotation) {
+        // 如果当前方法所在的类标识了 @IgnoreResponse 注解，不需要处理
+        boolean classHasIgnoreResponseAnnotation =
+                methodParameter.getDeclaringClass().isAnnotationPresent(IgnoreResponse.class);
+        if (classHasIgnoreResponseAnnotation) {
             return false;
         }
-        // 如果当前方法标识了 @IgnoreResponseAdvice 注解，不需要处理
-        boolean methodHasIgnoreResponseAdviceAnnotation =
-                methodParameter.getMethod().isAnnotationPresent(IgnoreResponseAdvice.class);
-        if (methodHasIgnoreResponseAdviceAnnotation) {
+        // 如果当前方法标识了 @IgnoreResponse 注解，不需要处理
+        boolean methodHasIgnoreResponseAnnotation =
+                methodParameter.getMethod().isAnnotationPresent(IgnoreResponse.class);
+        if (methodHasIgnoreResponseAnnotation) {
             return false;
         }
 
