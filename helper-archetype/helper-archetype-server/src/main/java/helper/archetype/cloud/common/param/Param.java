@@ -19,7 +19,7 @@ public class Param extends BaseEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "com.ishanshan.generator.SnowflakeIdWorker")
+    @GenericGenerator(name = "idGenerator", strategy = "com.coding.helpers.tool.cmp.generator.SnowFlakeIdStrategy")
     private Long id;
 
     /** 系统参数代码 */
