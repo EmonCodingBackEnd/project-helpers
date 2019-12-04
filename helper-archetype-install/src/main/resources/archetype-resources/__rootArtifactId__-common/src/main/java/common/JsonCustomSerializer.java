@@ -28,6 +28,8 @@ import java.util.Date;
 
 public interface JsonCustomSerializer {
 
+    String EMPTY = "";
+
     class BigDecimal2FormatStringSerializer extends JsonSerializer<BigDecimal> {
         // 默认的格式化字符样式 “${symbol_pound}.00”  还可以是像“${symbol_pound}.0000”
         private static final String DEFAULT_FORMAT_PATTERN = "${symbol_pound},${symbol_pound}${symbol_pound}0.00";
@@ -37,7 +39,11 @@ public interface JsonCustomSerializer {
         @Override
         public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException, JsonProcessingException {
-            gen.writeString(decimalFormat.format(value));
+            if (value != null) {
+                gen.writeString(decimalFormat.format(value));
+            } else {
+                gen.writeString(EMPTY);
+            }
         }
     }
 
@@ -50,7 +56,11 @@ public interface JsonCustomSerializer {
         @Override
         public void serialize(BigDecimal value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException, JsonProcessingException {
-            gen.writeString(decimalFormat.format(value));
+            if (value != null) {
+                gen.writeString(decimalFormat.format(value));
+            } else {
+                gen.writeString(EMPTY);
+            }
         }
     }
 
@@ -59,8 +69,12 @@ public interface JsonCustomSerializer {
         @Override
         public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException, JsonProcessingException {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            gen.writeString(sdf.format(value));
+            if (value != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                gen.writeString(sdf.format(value));
+            } else {
+                gen.writeString(EMPTY);
+            }
         }
     }
 
@@ -69,8 +83,12 @@ public interface JsonCustomSerializer {
         @Override
         public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException, JsonProcessingException {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            gen.writeString(sdf.format(value));
+            if (value != null) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                gen.writeString(sdf.format(value));
+            } else {
+                gen.writeString(EMPTY);
+            }
         }
     }
 
@@ -78,7 +96,11 @@ public interface JsonCustomSerializer {
         @Override
         public void serialize(Date value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException, JsonProcessingException {
-            gen.writeNumber(value.getTime() / 1000);
+            if (value != null) {
+                gen.writeNumber(value.getTime() / 1000);
+            } else {
+                gen.writeString(EMPTY);
+            }
         }
     }
 
@@ -86,7 +108,11 @@ public interface JsonCustomSerializer {
         @Override
         public void serialize(Long value, JsonGenerator gen, SerializerProvider serializers)
                 throws IOException, JsonProcessingException {
-            gen.writeString(String.valueOf(value));
+            if (value != null) {
+                gen.writeString(String.valueOf(value));
+            } else {
+                gen.writeString(EMPTY);
+            }
         }
     }
 }
