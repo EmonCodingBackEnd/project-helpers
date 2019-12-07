@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 @ConditionalOnMissingBean(annotation = DisableGlobalExceptionInterceptor.class)
 @Slf4j
-public class ExceptionInterceptor {
+public class GlobalExceptionInterceptor {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
