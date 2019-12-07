@@ -17,11 +17,14 @@ package ${package}.exception;
 
 import com.coding.helpers.tool.cmp.api.AppResponse;
 import com.coding.helpers.tool.cmp.exception.AppException;
+import com.coding.helpers.tool.cmp.exception.annotation.DisableGlobalExceptionInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.integration.config.GlobalChannelInterceptor;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@DisableGlobalExceptionInterceptor
 @ControllerAdvice
 @Slf4j
 public class ExceptionInterceptor {
