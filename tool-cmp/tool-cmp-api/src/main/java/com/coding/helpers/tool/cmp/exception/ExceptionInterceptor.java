@@ -13,12 +13,15 @@
 package com.coding.helpers.tool.cmp.exception;
 
 import com.coding.helpers.tool.cmp.api.AppResponse;
+import com.coding.helpers.tool.cmp.exception.annotation.DisableGlobalExceptionInterceptor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice
+@ConditionalOnMissingBean(annotation = DisableGlobalExceptionInterceptor.class)
 @Slf4j
 public class ExceptionInterceptor {
 
