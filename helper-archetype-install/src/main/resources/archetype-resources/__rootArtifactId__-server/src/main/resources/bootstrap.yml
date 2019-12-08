@@ -21,15 +21,6 @@ spring:
 #      username: user
 #      password: 123456
 
-management:
-  endpoint:
-    shutdown:
-      enabled: true # 最特殊的监控端点
-  endpoints:
-    web:
-      exposure:
-        include: "*" # 打开所有的监控点
-
 eureka:
   instance:
     metadataMap:
@@ -41,6 +32,22 @@ eureka:
       loadbalancer:
         retry:
           enabled: false
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true # 最特殊的监控端点
+  endpoints:
+    web:
+      exposure:
+        include: "*" # 打开所有的监控点
+
+info:
+  app:
+    name: '@project.build.finalName@'
+    groupId: '@project.parent.groupId@'
+    artifactId: '@project.parent.artifactId@'
+    version: '@project.parent.version@'
 
 #management:
 #  security:
