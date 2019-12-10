@@ -12,13 +12,13 @@
  ********************************************************************************/
 package helper.archetype.cloud.common;
 
+import com.coding.helpers.tool.cmp.exception.AppBaseStatus;
 import com.coding.helpers.tool.cmp.exception.AppException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import helper.archetype.cloud.exception.AppStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -58,7 +58,7 @@ public class JsonConverter {
             result = gson.fromJson(json, typeOfT);
         } catch (JsonSyntaxException e) {
             log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", json), e);
-            throw new AppException(AppStatus.FROM_JSON_ERRPR);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "JSON转换到对象错误");
         }
         return result;
     }
@@ -69,7 +69,7 @@ public class JsonConverter {
             result = gson.fromJson(json, clazzOfT);
         } catch (JsonSyntaxException e) {
             log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", json), e);
-            throw new AppException(AppStatus.FROM_JSON_ERRPR);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "JSON转换到对象错误");
         }
         return result;
     }
@@ -80,7 +80,7 @@ public class JsonConverter {
             result = objectMapper.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             log.error(String.format("【JSON转换错误】对象转换到JSON错误, object=%s", object), e);
-            throw new AppException(AppStatus.TO_JSON_ERRPR);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "对象转换到JSON错误");
         }
         return result;
     }
@@ -91,7 +91,7 @@ public class JsonConverter {
             jsonNode = objectMapper.readTree(json);
         } catch (IOException e) {
             log.error(String.format("【JSON转换错误】JSON转换到对象错误, string=%s", json), e);
-            throw new AppException(AppStatus.FROM_JSON_ERRPR);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "对象转换到JSON错误");
         }
         return jsonNode;
     }

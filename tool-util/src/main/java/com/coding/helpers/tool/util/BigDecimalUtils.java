@@ -1,6 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
 /*
  * 文件名称：BigDecimalUtils.java
  * 系统名称：[系统名称]
@@ -13,7 +10,7 @@
  * <Version>        <DateSerial>        <Author>        <Description>
  * 1.0.0            20180530-01         Rushing0711     M201805301210 新建文件
  ********************************************************************************/
-package ${package}.common.util;
+package com.coding.helpers.tool.util;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -21,14 +18,14 @@ import java.text.DecimalFormat;
 /**
  * BigDecimal工具类.
  *
- * <p>创建时间: <font style="color:${symbol_pound}00FFFF">20180530 12:10</font><br>
+ * <p>创建时间: <font style="color:#00FFFF">20180530 12:10</font><br>
  * [请在此输入功能详述]
  *
  * @author Rushing0711
  * @version 1.0.0
  * @since 1.0.0
  */
-public class BigDecimalUtils {
+public abstract class BigDecimalUtils {
 
     // 默认除法运算精度
     private static final int DEFAULT_DIV_SCALE = 10;
@@ -36,9 +33,9 @@ public class BigDecimalUtils {
     // 零的精度
     private static final BigDecimal ZERO_SCALE = new BigDecimal("0.0001");
 
-    // 默认的格式化字符样式 “${symbol_pound}.00”  还可以是像“${symbol_pound}.0000”
-    public static final String DEFAULT_FORMAT_PATTERN = "${symbol_pound},${symbol_pound}${symbol_pound}0.00";
-    public static final String SMPLE_FORMAT_PATTERN = "${symbol_pound}.00";
+    // 默认的格式化字符样式 “#.00”  还可以是像“#.0000”
+    public static final String DEFAULT_FORMAT_PATTERN = "#,##0.00";
+    public static final String SMPLE_FORMAT_PATTERN = "#.00";
 
     public static BigDecimal add(double val, double... vals) {
         BigDecimal bdVal = BigDecimal.valueOf(val);
@@ -194,12 +191,12 @@ public class BigDecimalUtils {
     /**
      * 格式化金额数据.
      *
-     * <p>创建时间: <font style="color:${symbol_pound}00FFFF">20180531 16:00</font><br>
+     * <p>创建时间: <font style="color:#00FFFF">20180531 16:00</font><br>
      *
      * <ul>
-     *   <li><code>format(123456.7, "${symbol_pound}.00")->123456.70</code>
-     *   <li><code>format(123456.7, "${symbol_pound}.0000")->123456.7000</code>
-     *   <li><code>format(123456.7, "${symbol_pound},${symbol_pound}${symbol_pound}0.00")->123,456.70</code>
+     *   <li><code>format(123456.7, "#.00")->123456.70</code>
+     *   <li><code>format(123456.7, "#.0000")->123456.7000</code>
+     *   <li><code>format(123456.7, "#,##0.00")->123,456.70</code>
      * </ul>
      *
      * @param val - 金额数据

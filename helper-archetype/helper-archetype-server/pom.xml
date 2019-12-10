@@ -108,6 +108,10 @@
             <groupId>com.coding.helpers.tool</groupId>
             <artifactId>tool-cmp-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.coding.helpers.tool</groupId>
+            <artifactId>tool-util</artifactId>
+        </dependency>
         <!-- 引入二方包 end -->
 
         <!-- 引入一方包 beg -->

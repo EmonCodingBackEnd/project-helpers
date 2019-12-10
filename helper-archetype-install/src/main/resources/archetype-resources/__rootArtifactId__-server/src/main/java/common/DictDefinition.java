@@ -15,9 +15,8 @@
  ********************************************************************************/
 package ${package}.common;
 
+import com.coding.helpers.tool.cmp.exception.AppBaseStatus;
 import com.coding.helpers.tool.cmp.exception.AppException;
-import ${package}.exception.AppStatus;
-import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -38,11 +37,12 @@ public interface DictDefinition {
     Logger log = LoggerFactory.getLogger(DictDefinition.class);
 
     interface BaseEnum<T> {
+
         T getValue();
     }
 
-    /** 根据String值获取枚举实例，如果找不到则返回null. */
-    static <T extends BaseEnum> T getByValue(Class<T> enumClazz, String value) {
+    /** 根据C类型的value值获取枚举实例，如果找不到则返回null. */
+    static <C, T extends BaseEnum> T getByValue(Class<T> enumClazz, C value) {
         for (T each : enumClazz.getEnumConstants()) {
             if (each.getValue().equals(value)) {
                 return each;
@@ -51,36 +51,14 @@ public interface DictDefinition {
         return null;
     }
 
-    /** 根据Integer值获取枚举实例，如果找不到则返回null. */
-    static <T extends BaseEnum> T getByValue(Class<T> enumClazz, Integer value) {
-        for (T each : enumClazz.getEnumConstants()) {
-            if (each.getValue().equals(value)) {
-                return each;
-            }
+    /** 根据C类型从value值获取枚举实例，如果找不到则抛异常. */
+    static <C, T extends BaseEnum<C>> T getByValueNoisy(Class<T> enumClazz, C value) {
+        T t = getByValue(enumClazz, value);
+        if (t == null) {
+            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, value={}", enumClazz, value);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "根据字典值找不到对应字典");
         }
-        return null;
-    }
-
-    /** 根据String值获取枚举实例，如果找不到则抛异常. */
-    static <T extends BaseEnum> T getByValueNoisy(Class<T> enumClazz, String value) {
-        for (T each : enumClazz.getEnumConstants()) {
-            if (each.getValue().equals(value)) {
-                return each;
-            }
-        }
-        log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, value={}", enumClazz, value);
-        throw new AppException(AppStatus.DICT_NOT_EXIST);
-    }
-
-    /** 根据Integer值获取枚举实例，如果找不到则抛异常. */
-    static <T extends BaseEnum> T getByValueNoisy(Class<T> enumClazz, Integer value) {
-        for (T each : enumClazz.getEnumConstants()) {
-            if (each.getValue().equals(value)) {
-                return each;
-            }
-        }
-        log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, value={}", enumClazz, value);
-        throw new AppException(AppStatus.DICT_NOT_EXIST);
+        return t;
     }
 
     // ==================================================华丽的分割线==================================================
@@ -113,7 +91,6 @@ public interface DictDefinition {
     }
 
     /** 【仅定义在代码】商品上下架状态. */
-    @Getter
     @RequiredArgsConstructor
     enum ProductStatus implements BaseEnum<Integer> {
         /** 在架. */
@@ -121,7 +98,13 @@ public interface DictDefinition {
         /** 下架. */
         DOWN(1),
         ;
-        public static final String NAME = "product_status";
         @NonNull private Integer value;
+
+        public static final String NAME = "product_status";
+
+        @Override
+        public Integer getValue() {
+            return value;
+        }
     }
 }
