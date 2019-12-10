@@ -1,2 +1,0 @@
-# coupon-common
-coupon-common
