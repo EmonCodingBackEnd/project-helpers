@@ -76,9 +76,14 @@ public interface AppBaseStatus {
         return new DefaultStatus(0, "操作成功");
     }
 
+    /** 系统意料之内的异常. */
+    static AppBaseStatus systemExpectedError() {
+        return new DefaultStatus(10099000, "系统意料之内的异常");
+    }
+
     /** 系统意料之外的异常. */
     static AppBaseStatus systemUnexpectedError() {
-        return new DefaultStatus(9999999, "系统意料之外的异常");
+        return new DefaultStatus(10099999, "系统意料之外的异常");
     }
 
     @Getter
