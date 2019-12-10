@@ -30,6 +30,7 @@
         <dependency>
             <groupId>com.coding.helpers.tool</groupId>
             <artifactId>tool-cmp-api</artifactId>
-        </dependency><!-- 引入一方包 end -->
+        </dependency>
+        <!-- 引入一方包 end -->
     </dependencies>
 </project>
