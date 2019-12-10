@@ -1,6 +1,7 @@
 package helper.archetype.cloud.common.param;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import helper.archetype.cloud.common.JsonCustomSerializer;
 import lombok.Data;
 
 import java.io.Serializable;
