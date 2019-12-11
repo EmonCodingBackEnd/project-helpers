@@ -16,7 +16,7 @@ import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 
@@ -31,7 +31,7 @@ import javax.annotation.PostConstruct;
  * @since 1.0.0
  */
 @Data
-@Component
+@Configuration
 @ConfigurationProperties(prefix = "config")
 @RefreshScope
 @Slf4j

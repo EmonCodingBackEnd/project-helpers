@@ -12,6 +12,7 @@
  ********************************************************************************/
 package helper.archetype.cloud.controller;
 
+import com.coding.helpers.tool.cmp.api.annotation.IgnoreResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +24,8 @@ public class EnvController {
 
     @Value("${env}")
     private String env;
-
+            
+    @IgnoreResponse
     @GetMapping("/env/print")
     public String print() {
         return env;

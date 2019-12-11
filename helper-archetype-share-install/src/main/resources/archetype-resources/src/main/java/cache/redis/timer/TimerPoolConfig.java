@@ -16,8 +16,16 @@
 package ${package}.cache.redis.timer;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+
+import java.util.concurrent.Executor;
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * 特殊任务线程池配置.
@@ -30,8 +38,10 @@ import org.springframework.stereotype.Component;
  * @since 1.0.0
  */
 @Data
-@Component
+@Configuration
+@ConditionalOnProperty(value = "timerpool.enabled", havingValue = "true")
 @ConfigurationProperties(prefix = "timerpool")
+@Slf4j
 public class TimerPoolConfig {
 
     private Delay delay;
@@ -76,5 +86,82 @@ public class TimerPoolConfig {
         private int queueCapacity;
 
         private int keeyAliveSecond;
+    }
+
+    @ConditionalOnProperty(value = "timerpool.delay.enabled", havingValue = "true")
+    @Bean
+    public ThreadPoolTaskExecutor getDelayQueueExecutor() {
+        log.info(
+                "【延时任务线程池配置】threadNamePrefix={},corePoolSize={},maxPoolSize={},queueCapacity={},keeyAliveSecond={}",
+                delay.getThreadNamePrefix(),
+                delay.getCorePoolSize(),
+                delay.getMaxPoolSize(),
+                delay.getQueueCapacity(),
+                delay.getKeeyAliveSecond());
+        ThreadPoolTaskExecutor delayQueueExecutor;
+        delayQueueExecutor = new ThreadPoolTaskExecutor();
+        delayQueueExecutor.setThreadNamePrefix(delay.getThreadNamePrefix());
+        delayQueueExecutor.setCorePoolSize(delay.getCorePoolSize());
+        delayQueueExecutor.setMaxPoolSize(delay.getMaxPoolSize());
+        delayQueueExecutor.setQueueCapacity(delay.getQueueCapacity());
+        delayQueueExecutor.setKeepAliveSeconds(delay.getKeeyAliveSecond());
+        /*
+         * Rejected-policy：当pool已经达到max size的时候，如何处理新任务。
+         * CALLER_RUNS：不在新线程中执行任务，而是由调用者所在的线程来执行。
+         */
+        delayQueueExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        delayQueueExecutor.initialize();
+        return delayQueueExecutor;
+    }
+
+    /**
+     * 并行任务使用策略，多线程处理。
+     *
+     * @return -
+     */
+    @ConditionalOnProperty(value = "timerpool.schedule.enabled", havingValue = "true")
+    @Bean
+    public Executor getScheduleExecutor() {
+        log.info(
+                "【定时器线程池配置】threadNamePrefix={},poolSize={},awaitTerminationSeconds={}",
+                schedule.getThreadNamePrefix(),
+                schedule.getPoolSize(),
+                schedule.getAwaitTerminationSeconds());
+        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
+        scheduler.setThreadNamePrefix(schedule.getThreadNamePrefix());
+        scheduler.setPoolSize(schedule.getPoolSize());
+        scheduler.setAwaitTerminationSeconds(schedule.getAwaitTerminationSeconds());
+        scheduler.setWaitForTasksToCompleteOnShutdown(true);
+        return scheduler;
+    }
+
+    /**
+     * 异步任务使用策略，多线程处理。
+     *
+     * @return -
+     */
+    @ConditionalOnProperty(value = "timerpool.async.enabled", havingValue = "true")
+    @Bean
+    public Executor getAsyncExecutor() {
+        log.info(
+                "【异步任务线程池配置】threadNamePrefix={},corePoolSize={},maxPoolSize={},queueCapacity={},keeyAliveSecond={}",
+                async.getThreadNamePrefix(),
+                async.getCorePoolSize(),
+                async.getMaxPoolSize(),
+                async.getQueueCapacity(),
+                async.getKeeyAliveSecond());
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setThreadNamePrefix(async.getThreadNamePrefix());
+        executor.setCorePoolSize(async.getCorePoolSize());
+        executor.setMaxPoolSize(async.getMaxPoolSize());
+        executor.setQueueCapacity(async.getQueueCapacity());
+        executor.setKeepAliveSeconds(async.getKeeyAliveSecond());
+        /*
+         * Rejected-policy：当pool已经达到max size的时候，如何处理新任务。
+         * CALLER_RUNS：不在新线程中执行任务，而是由调用者所在的线程来执行。
+         */
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        executor.initialize();
+        return executor;
     }
 }

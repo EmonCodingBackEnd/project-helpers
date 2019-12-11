@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.coding.helpers</groupId>
-    <artifactId>helper-archetype-share</artifactId>
+    <artifactId>helper-archetype-cloud-share</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
-    <name>helper-archetype-share</name>
+    <name>helper-archetype-cloud-share</name>
 
     <properties>
         <java.version>1.8</java.version>

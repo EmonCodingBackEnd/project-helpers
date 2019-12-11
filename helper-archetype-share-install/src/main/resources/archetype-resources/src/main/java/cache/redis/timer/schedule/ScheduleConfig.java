@@ -18,13 +18,11 @@ package ${package}.cache.redis.timer.schedule;
 import ${package}.cache.redis.timer.TimerPoolConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
-
-import java.util.concurrent.Executor;
+import org.springframework.stereotype.Component;
 
 /**
  * 并行任务配置.
@@ -36,7 +34,9 @@ import java.util.concurrent.Executor;
  * @version 1.0.0
  * @since 1.0.0
  */
-@Configuration
+@EnableScheduling
+@ConditionalOnBean({TimerPoolConfig.class, TimerPoolConfig.Schedule.class})
+@Component
 @Slf4j
 public class ScheduleConfig implements SchedulingConfigurer {
 
@@ -49,27 +49,6 @@ public class ScheduleConfig implements SchedulingConfigurer {
      */
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
-        taskRegistrar.setScheduler(taskExecutor());
-    }
-
-    /**
-     * 并行任务使用策略，多线程处理。
-     *
-     * @return -
-     */
-    @Bean
-    public Executor taskExecutor() {
-        log.info(
-                "【定时器线程池配置】threadNamePrefix={},poolSize={},awaitTerminationSeconds={}",
-                timerPoolConfig.getSchedule().getThreadNamePrefix(),
-                timerPoolConfig.getSchedule().getPoolSize(),
-                timerPoolConfig.getSchedule().getAwaitTerminationSeconds());
-        ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-        scheduler.setThreadNamePrefix(timerPoolConfig.getSchedule().getThreadNamePrefix());
-        scheduler.setPoolSize(timerPoolConfig.getSchedule().getPoolSize());
-        scheduler.setAwaitTerminationSeconds(
-                timerPoolConfig.getSchedule().getAwaitTerminationSeconds());
-        scheduler.setWaitForTasksToCompleteOnShutdown(true);
-        return scheduler;
+        taskRegistrar.setScheduler(timerPoolConfig.getScheduleExecutor());
     }
 }

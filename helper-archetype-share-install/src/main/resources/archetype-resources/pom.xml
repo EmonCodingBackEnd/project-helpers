@@ -5,7 +5,7 @@
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>${artifactId}</name>
 
@@ -23,6 +23,16 @@
     </properties>
 
     <dependencyManagement>
+        <dependencies>
+            <!-- 定义三方包 beg -->
+            <!-- 定义三方包 end -->
+
+            <!-- 定义二方包 beg -->
+            <!-- 定义二方包 end -->
+
+            <!-- 定义一方包 beg -->
+            <!-- 定义一方包 end -->
+        </dependencies>
     </dependencyManagement>
 
     <dependencies>
