@@ -2,12 +2,7 @@ package helper.archetype.cloud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
 
-@ComponentScans(
-    value = {@ComponentScan(value = "com.coding"), @ComponentScan(value = "helper.archetype.cloud")}
-)
 @SpringBootApplication
 public class ArchetypeApplication {
 
