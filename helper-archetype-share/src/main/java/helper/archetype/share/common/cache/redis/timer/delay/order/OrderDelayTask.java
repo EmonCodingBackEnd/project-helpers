@@ -48,6 +48,7 @@ public class OrderDelayTask extends DelayRetryTask implements ApplicationContext
         }
     }
 
+    // 定义私有构造器，防止被外部初始化
     private OrderDelayTask() {}
 
     public OrderDelayTask(Long orderId) {
