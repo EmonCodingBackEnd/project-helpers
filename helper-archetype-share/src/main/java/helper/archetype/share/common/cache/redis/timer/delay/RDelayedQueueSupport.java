@@ -8,14 +8,14 @@ import org.redisson.api.RDelayedQueue;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
-@ConditionalOnProperty(value = "timerpool.delay.enabled", havingValue = "true")
+@ConditionalOnBean({TimerPoolConfig.class, TimerPoolConfig.Delay.class})
 @Component
 @Slf4j
 public class RDelayedQueueSupport {

@@ -15,6 +15,8 @@ package helper.archetype.share.common.cache.redis.timer.schedule;
 import helper.archetype.share.common.cache.redis.timer.TimerPoolConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import org.springframework.stereotype.Component;
@@ -29,6 +31,8 @@ import org.springframework.stereotype.Component;
  * @version 1.0.0
  * @since 1.0.0
  */
+@EnableScheduling
+@ConditionalOnBean({TimerPoolConfig.class, TimerPoolConfig.Schedule.class})
 @Component
 @Slf4j
 public class ScheduleConfig implements SchedulingConfigurer {

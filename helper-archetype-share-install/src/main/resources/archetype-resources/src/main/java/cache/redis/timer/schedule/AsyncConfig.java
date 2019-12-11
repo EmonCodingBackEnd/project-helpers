@@ -19,7 +19,9 @@ import ${package}.cache.redis.timer.TimerPoolConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.Executor;
@@ -34,6 +36,8 @@ import java.util.concurrent.Executor;
  * @version 1.0.0
  * @since 1.0.0
  */
+@EnableAsync
+@ConditionalOnBean({TimerPoolConfig.class, TimerPoolConfig.Async.class})
 @Component
 @Slf4j
 public class AsyncConfig implements AsyncConfigurer {
