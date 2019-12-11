@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
 
 @ComponentScans(
-    value = {@ComponentScan(value = "com.coding"), @ComponentScanvalue="${package}"}
+    value = {@ComponentScan(value = "com.coding"), @ComponentScan(value="${package}")}
 )
 @SpringBootApplication
 public class ArchetypeApplication {

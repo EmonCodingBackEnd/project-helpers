@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
 
 @ComponentScans(
-    value = {@ComponentScan(value = "com.coding"), @ComponentScanvalue="helper.archetype.cloud"}
+    value = {@ComponentScan(value = "com.coding"), @ComponentScan(value = "helper.archetype.cloud")}
 )
 @SpringBootApplication
 public class ArchetypeApplication {
