@@ -89,6 +89,7 @@ timerpool:
     maxPoolSize: 200
     queueCapacity: 1000
     keeyAliveSecond: 60
+    awaitTerminationSeconds: 60
     delayTaskQueueDaemonThreadName: DelayTaskQueueDaemonThread
   schedule:
     enabled: true # 开启或关闭
@@ -102,6 +103,7 @@ timerpool:
     maxPoolSize: 50
     queueCapacity: 100
     keeyAliveSecond: 60
+    awaitTerminationSeconds: 60
 ```
 
 
