@@ -19,6 +19,10 @@ eureka:
 
 zuul:
   routes:
+    template:
+      path: /coupon/template/**
+      serviceId: coupon-template-provider
+      strip-prefix: false
     myProduct:
       path: /product/**
       serviceId: sell-product-provider
