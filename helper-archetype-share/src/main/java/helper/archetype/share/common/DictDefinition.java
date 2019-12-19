@@ -14,6 +14,7 @@ package helper.archetype.share.common;
 
 import com.coding.helpers.tool.cmp.exception.AppBaseStatus;
 import com.coding.helpers.tool.cmp.exception.AppException;
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -36,6 +37,11 @@ public interface DictDefinition {
     interface BaseEnum<T> {
 
         T getValue();
+
+        default String getDesc() {
+            log.warn("当前枚举未实现getDesc方法");
+            throw new AppException(AppBaseStatus.systemExpectedError(), "当前枚举未实现getDesc方法");
+        }
     }
 
     /** 根据C类型的value值获取枚举实例，如果找不到则返回null. */
@@ -89,19 +95,35 @@ public interface DictDefinition {
 
     /** 【仅定义在代码】商品上下架状态. */
     @RequiredArgsConstructor
-    enum ProductStatus implements BaseEnum<Integer> {
+    enum OnlyValueEnum implements BaseEnum<Integer> {
         /** 在架. */
         UP(0),
         /** 下架. */
         DOWN(1),
         ;
-        @NonNull private Integer value;
+        @NonNull @Getter private Integer value;
 
         public static final String NAME = "product_status";
 
-        @Override
-        public Integer getValue() {
-            return value;
+        public static OnlyValueEnum of(Integer value) {
+            return getByValue(OnlyValueEnum.class, value);
+        }
+    }
+    /** 【仅定义在代码】商品上下架状态. */
+    @RequiredArgsConstructor
+    enum ValueDescEnum implements BaseEnum<Integer> {
+        /** 在架. */
+        UP(0, "在架"),
+        /** 下架. */
+        DOWN(1, "下架"),
+        ;
+        @NonNull @Getter private Integer value;
+        @NonNull @Getter private String desc;
+
+        public static final String NAME = "product_status";
+
+        public static ValueDescEnum of(Integer value) {
+            return getByValue(ValueDescEnum.class, value);
         }
     }
 }
