@@ -45,8 +45,8 @@ public interface DictDefinition {
     }
 
     /** 根据C类型的code值获取枚举实例，如果找不到则返回null. */
-    static <T, E extends BaseEnum<T>> E getByCode(Class<E> enumClazz, T code) {
-        for (E each : enumClazz.getEnumConstants()) {
+    static <T, E extends BaseEnum<T>> E getByCode(Class<E> enumClass, T code) {
+        for (E each : enumClass.getEnumConstants()) {
             if (each.getCode().equals(code)) {
                 return each;
             }
@@ -55,10 +55,30 @@ public interface DictDefinition {
     }
 
     /** 根据C类型从code值获取枚举实例，如果找不到则抛异常. */
-    static <T, E extends BaseEnum<T>> E getByCodeNoisy(Class<E> enumClazz, T code) {
-        E e = getByCode(enumClazz, code);
+    static <T, E extends BaseEnum<T>> E getByCodeNoisy(Class<E> enumClass, T code) {
+        E e = getByCode(enumClass, code);
         if (e == null) {
-            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, code={}", enumClazz, code);
+            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, code={}", enumClass, code);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "根据字典值找不到对应字典");
+        }
+        return e;
+    }
+
+    /** 根据C类型的code值获取枚举实例，如果找不到则返回null. */
+    static <T, E extends BaseEnum<T>> E getByDesc(Class<E> enumClass, String desc) {
+        for (E each : enumClass.getEnumConstants()) {
+            if (each.getDesc().equals(desc)) {
+                return each;
+            }
+        }
+        return null;
+    }
+
+    /** 根据C类型从code值获取枚举实例，如果找不到则抛异常. */
+    static <T, E extends BaseEnum<T>> E getByDescNoisy(Class<E> enumClass, String desc) {
+        E e = getByDesc(enumClass, desc);
+        if (e == null) {
+            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, code={}", enumClass, desc);
             throw new AppException(AppBaseStatus.systemExpectedError(), "根据字典值找不到对应字典");
         }
         return e;
@@ -108,6 +128,10 @@ public interface DictDefinition {
         public static CodeEnum ofCode(Integer code) {
             return getByCode(CodeEnum.class, code);
         }
+
+        public static CodeEnum ofCodeNoisy(Integer code) {
+            return getByCodeNoisy(CodeEnum.class, code);
+        }
     }
 
     /** 【仅定义在代码】code和desc并存的枚举. */
@@ -125,6 +149,18 @@ public interface DictDefinition {
 
         public static CodeDescEnum ofCode(Integer code) {
             return getByCode(CodeDescEnum.class, code);
+        }
+
+        public static CodeDescEnum ofCodeNoisy(Integer code) {
+            return getByCodeNoisy(CodeDescEnum.class, code);
+        }
+
+        public static CodeDescEnum ofDesc(String desc) {
+            return getByDesc(CodeDescEnum.class, desc);
+        }
+
+        public static CodeDescEnum ofDescNoisy(String desc) {
+            return getByDescNoisy(CodeDescEnum.class, desc);
         }
     }
 }
