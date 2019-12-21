@@ -44,7 +44,7 @@ public interface DictDefinition {
         }
     }
 
-    /** 根据C类型的code值获取枚举实例，如果找不到则返回null. */
+    /** 根据T类型的code值获取枚举实例，如果找不到则返回null. */
     static <T, E extends BaseEnum<T>> E getByCode(Class<E> enumClass, T code) {
         for (E each : enumClass.getEnumConstants()) {
             if (each.getCode().equals(code)) {
@@ -54,7 +54,7 @@ public interface DictDefinition {
         return null;
     }
 
-    /** 根据C类型从code值获取枚举实例，如果找不到则抛异常. */
+    /** 根据T类型的code值获取枚举实例，如果找不到则抛异常. */
     static <T, E extends BaseEnum<T>> E getByCodeNoisy(Class<E> enumClass, T code) {
         E e = getByCode(enumClass, code);
         if (e == null) {
@@ -64,7 +64,7 @@ public interface DictDefinition {
         return e;
     }
 
-    /** 根据C类型的code值获取枚举实例，如果找不到则返回null. */
+    /** 根据String类型的desc值获取枚举实例，如果枚举未实现getDesc方法会抛异常，如果找不到则返回null. */
     static <T, E extends BaseEnum<T>> E getByDesc(Class<E> enumClass, String desc) {
         for (E each : enumClass.getEnumConstants()) {
             if (each.getDesc().equals(desc)) {
@@ -74,12 +74,12 @@ public interface DictDefinition {
         return null;
     }
 
-    /** 根据C类型从code值获取枚举实例，如果找不到则抛异常. */
+    /** 根据String类型的desc值获取枚举实例，如果枚举未实现getDesc方法会抛异常，如果找不到则抛异常. */
     static <T, E extends BaseEnum<T>> E getByDescNoisy(Class<E> enumClass, String desc) {
         E e = getByDesc(enumClass, desc);
         if (e == null) {
-            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, code={}", enumClass, desc);
-            throw new AppException(AppBaseStatus.systemExpectedError(), "根据字典值找不到对应字典");
+            log.error("【字典查询】根据字典描述找不到对应字典, enumClazz={}, desc={}", enumClass, desc);
+            throw new AppException(AppBaseStatus.systemExpectedError(), "根据字典描述找不到对应字典");
         }
         return e;
     }
