@@ -36,7 +36,7 @@ public interface DictDefinition {
 
     interface BaseEnum<T> {
 
-        T getValue();
+        T getCode();
 
         default String getDesc() {
             log.warn("当前枚举未实现getDesc方法");
@@ -44,21 +44,21 @@ public interface DictDefinition {
         }
     }
 
-    /** 根据C类型的value值获取枚举实例，如果找不到则返回null. */
-    static <T, E extends BaseEnum<T>> E getByValue(Class<E> enumClazz, T value) {
+    /** 根据C类型的code值获取枚举实例，如果找不到则返回null. */
+    static <T, E extends BaseEnum<T>> E getByCode(Class<E> enumClazz, T code) {
         for (E each : enumClazz.getEnumConstants()) {
-            if (each.getValue().equals(value)) {
+            if (each.getCode().equals(code)) {
                 return each;
             }
         }
         return null;
     }
 
-    /** 根据C类型从value值获取枚举实例，如果找不到则抛异常. */
-    static <T, E extends BaseEnum<T>> E getByValueNoisy(Class<E> enumClazz, T value) {
-        E e = getByValue(enumClazz, value);
+    /** 根据C类型从code值获取枚举实例，如果找不到则抛异常. */
+    static <T, E extends BaseEnum<T>> E getByCodeNoisy(Class<E> enumClazz, T code) {
+        E e = getByCode(enumClazz, code);
         if (e == null) {
-            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, value={}", enumClazz, value);
+            log.error("【字典查询】根据字典值找不到对应字典, enumClazz={}, code={}", enumClazz, code);
             throw new AppException(AppBaseStatus.systemExpectedError(), "根据字典值找不到对应字典");
         }
         return e;
@@ -84,7 +84,7 @@ public interface DictDefinition {
         Integer NO = 0;
     }
 
-    /** 【代码和数据库】是否启用系统参数 */
+    /** 【代码和数据库】是否启用参数 */
     interface Enabled {
         String NAME = "enabled";
         /** 启用 */
@@ -93,37 +93,38 @@ public interface DictDefinition {
         Integer DISABLED = 0;
     }
 
-    /** 【仅定义在代码】商品上下架状态. */
+    /** 【仅定义在代码】仅有code的枚举. */
     @RequiredArgsConstructor
-    enum OnlyValueEnum implements BaseEnum<Integer> {
-        /** 在架. */
-        UP(0),
-        /** 下架. */
-        DOWN(1),
+    enum CodeEnum implements BaseEnum<Integer> {
+        /** 第一个. */
+        FIRST(1),
+        /** 第二个. */
+        SECOND(1),
         ;
-        @NonNull @Getter private Integer value;
+        @NonNull @Getter private Integer code;
 
-        public static final String NAME = "product_status";
+        public static final String NAME = "code";
 
-        public static OnlyValueEnum of(Integer value) {
-            return getByValue(OnlyValueEnum.class, value);
+        public static CodeEnum ofCode(Integer code) {
+            return getByCode(CodeEnum.class, code);
         }
     }
-    /** 【仅定义在代码】商品上下架状态. */
+
+    /** 【仅定义在代码】code和desc并存的枚举. */
     @RequiredArgsConstructor
-    enum ValueDescEnum implements BaseEnum<Integer> {
-        /** 在架. */
-        UP(0, "在架"),
-        /** 下架. */
-        DOWN(1, "下架"),
+    enum CodeDescEnum implements BaseEnum<Integer> {
+        /** 第一个. */
+        FIRST(0, "第一个"),
+        /** 第二个. */
+        SECOND(1, "第二个"),
         ;
-        @NonNull @Getter private Integer value;
+        @NonNull @Getter private Integer code;
         @NonNull @Getter private String desc;
 
-        public static final String NAME = "product_status";
+        public static final String NAME = "code_desc";
 
-        public static ValueDescEnum of(Integer value) {
-            return getByValue(ValueDescEnum.class, value);
+        public static CodeDescEnum ofCode(Integer code) {
+            return getByCode(CodeDescEnum.class, code);
         }
     }
 }
