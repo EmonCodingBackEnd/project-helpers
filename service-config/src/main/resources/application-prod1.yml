@@ -5,6 +5,9 @@ spring:
   rabbitmq:
     host: ${dynamic.host}
     port: 5672
+    username: rabbit
+    password: rabbit123
+    virtual-host: /
 
 eureka:
   client:
