@@ -272,6 +272,8 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
+                        <!--仅在install、deploy时生成源码包-->
+                        <phase>verify</phase>
                         <goals>
                             <!--由jar->jar-no-fork解决jenkins中maven3.6.3的问题：“[WARNING] Failed to getClass for org.apache.maven.plugins.source.SourceJarMojo”-->
                             <goal>jar-no-fork</goal>
