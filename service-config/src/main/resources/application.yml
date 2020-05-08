@@ -17,7 +17,7 @@ spring:
             - service-config-repo
           username: Rushing0711
           password: Mt209@3
-          basedir: /home/emon/project-helpers/service-config/basedir
+          basedir: /home/emon/saas/project-helpers/service-config/basedir
   security:
     user:
       password: 123456
