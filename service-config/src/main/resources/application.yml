@@ -5,7 +5,7 @@ dynamic:
 
 spring:
   application:
-    name: config
+    name: '@project.build.finalName@'
   profiles:
     active: dev
   cloud:

@@ -273,7 +273,8 @@
                     <execution>
                         <id>attach-sources</id>
                         <goals>
-                            <goal>jar</goal>
+                            <!--由jar->jar-no-fork解决jenkins中maven3.6.3的问题：“[WARNING] Failed to getClass for org.apache.maven.plugins.source.SourceJarMojo”-->
+                            <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>

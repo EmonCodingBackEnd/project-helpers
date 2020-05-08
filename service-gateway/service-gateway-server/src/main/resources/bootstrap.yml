@@ -5,7 +5,7 @@ dynamic:
 
 spring:
   application:
-    name: gateway
+    name: '@project.build.finalName@'
   profiles:
     active: dev
 #  为了节省虚拟机资源，一般情况下不开启 CONFIG 服务
