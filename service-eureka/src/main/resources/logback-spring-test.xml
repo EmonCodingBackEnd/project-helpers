@@ -7,7 +7,7 @@
     <!--如果服务器运行在JDK1.6或更高版本，可以直接运行jconsole程序，然后连接到你的服务器的MBeanServer-->
     <jmxConfigurator/>
 
-    <property name="logDir" value="/home/emon/saas/project-helpers/service-eureka/logs/eureka"/>
+    <property name="logDir" value="/home/emon/project-helpers/service-eureka/logs/eureka"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
