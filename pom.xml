@@ -23,7 +23,6 @@
         <module>tool-cmp</module>
         <module>tool-exp</module>
         <module>plugin-gray-deploy</module>
-        <module>helper-gray-spring-boot-starter</module>
     </modules>
 
     <parent>
