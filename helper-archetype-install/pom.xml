@@ -144,7 +144,7 @@
         <!--
         如何通过IDEA的 New Project -> Maven -> Create from archetype 选择到自己的archetype？
         1、安装插件 Maven Archetype Catalogs
-        2、打开IDEA配置界面，Settings -> Build,Execution,Deployment -> Maven Archetype Catalogs 添加 archetype-catalog.xml 文件
+        2、打开IDEA配置界面，Settings -> Build,Execution,Deployment -> Build Tools -> Maven Archetype Catalogs 添加 archetype-catalog.xml 文件
         默认在maven的本地资源库目录，比如 $HOME/.m2
         这里自定义配置的是 C:/Job/JobResource/local-repository/archetype-catalog.xml
         -->
